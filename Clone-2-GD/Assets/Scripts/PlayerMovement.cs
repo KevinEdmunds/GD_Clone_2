@@ -7,20 +7,29 @@ using Mirror;
 public class PlayerMovement : NetworkBehaviour
 {
     public float moveSpeed = 5f; // Movement speed of the player
-
+    PlayerActions playerActions;
     private Rigidbody2D rb; // Reference to the Rigidbody2D component
     private Vector2 movement; // Stores the movement input
 
     void Start()
     {
+        playerActions = this.GetComponent<PlayerActions>();
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component attached to the player
     }
 
     void Update()
     {
-        // Capture input from the player (arrow keys or WASD keys)
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        if(!playerActions.inVent)
+        {
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            movement.x = 0;
+            movement.y = 0;
+        }
+
     }
 
     void FixedUpdate()
