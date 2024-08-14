@@ -19,6 +19,10 @@ public class PlayerMovement : NetworkBehaviour
 
     void Update()
     {
+        if(!isLocalPlayer)
+        {
+            return;
+        }
         if(!playerActions.inVent)
         {
             movement.x = Input.GetAxisRaw("Horizontal");
@@ -29,12 +33,25 @@ public class PlayerMovement : NetworkBehaviour
             movement.x = 0;
             movement.y = 0;
         }
-
+        if(movement!=Vector2.zero)
+        {
+            UpdateServerMovement();
+        }
+    }
+    [Command] 
+    void UpdateServerMovement()
+    {
+        UpdateClientMovement();
     }
 
+    [ClientRpc]
+    void UpdateClientMovement()
+    {
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
     void FixedUpdate()
     {
         // Move the player based on input
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
     }
 }
