@@ -20,6 +20,7 @@ public class MyNetworkBehaviour : NetworkManager
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.P))
         {
             PlaceManagerOnServer();
@@ -53,8 +54,17 @@ public class MyNetworkBehaviour : NetworkManager
 
     public override void OnClientDisconnect()
     {
-        base.OnClientDisconnect();
-    }
 
+      
+       
+        
+    }
+    public override void OnServerDisconnect(NetworkConnectionToClient conn)
+    {
+        Debug.Log("Hierso");
+        managerVS.RemovePlayer();
+        base.OnServerDisconnect(conn);
+       
+    }
 
 }
