@@ -16,6 +16,7 @@ public class TaskSuccessText : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, -Screen.height / 2);
+        gameObject.SetActive(false);
     }
 
     public void AnimateText()
@@ -28,6 +29,7 @@ public class TaskSuccessText : MonoBehaviour
         
         while (Vector2.Distance(rectTransform.position, centerTarget.position) > 0.1f)
         {
+            gameObject.SetActive(true);
             rectTransform.position = Vector2.MoveTowards(rectTransform.position, centerTarget.position, moveSpeed * Time.deltaTime);
             yield return null;
         }
