@@ -83,11 +83,13 @@ public class PlayerActions : NetworkBehaviour
     public void KillTarget()
     {
         killTarget.GetComponent<PlayerType>().isAlive = false;
+        //this.transform.position = killTarget.transform.position;
+        MoveImposter(killTarget.transform.position);
     }
-
-    public void UpdateKillTarget()
+    [ClientRpc]
+    public void MoveImposter(Vector3 newPos)
     {
-
+        this.transform.position = newPos;
     }
     private void Update()
     {
