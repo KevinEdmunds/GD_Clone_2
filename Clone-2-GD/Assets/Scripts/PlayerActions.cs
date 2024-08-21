@@ -1,44 +1,117 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class PlayerActions : MonoBehaviour
+public class PlayerActions : NetworkBehaviour
 {
-    public bool isImposter = false;
     public bool canVent = false;
     public bool inVent = false;
+    public bool canKill = false;
     public GameObject currentVent = null;
+    public GameObject killTarget;
     public KeyCode interactKey;
+    public PlayerType playerType;
+    public Transform thisPlayerHitbox;
+    public PlayerHUD playerHUD;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isImposter && collision.tag == "Vent")
+        if(playerType.isImposter)
         {
-            //currentVent.GetComponent<Vent>().ventPanel.SetActive(true);
-            canVent = true;
-            currentVent = collision.gameObject;
+            if(isLocalPlayer)
+            {
+                if (collision.tag == "Vent")
+                {
+                    canVent = true;
+                    currentVent = collision.gameObject;
+                    playerHUD.ventButton.interactable = true;
+                }
+            }
+            if (collision.tag == "PlayerHitbox"&&collision.transform.parent.gameObject.GetComponent<PlayerType>().isAlive)
+            {
+                canKill = true;
+                playerHUD.killButton.interactable = true;
+                killTarget = collision.transform.parent.gameObject;
+            }
         }
+        if(collision.tag=="PlayerHitbox")
+        {
+            GameObject otherPlayer = collision.transform.parent.gameObject;
+            if(!otherPlayer.GetComponent<PlayerType>().isAlive)
+            {
+                playerHUD.reportButton.interactable = true;
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (playerType.isImposter)
+        {
+            if (isLocalPlayer)
+            {
+                if (collision.tag == "Vent")
+                {
+                    canVent = false;
+                    currentVent = null;
+                    playerHUD.ventButton.interactable = false;
+                }
+            }
+            if (collision.tag == "PlayerHitbox")
+            {
+                canKill = false;
+                playerHUD.killButton.interactable = false;
+                killTarget = null;
+            }
+        }
+        if (collision.tag == "PlayerHitbox")
+        {
+            GameObject otherPlayer = collision.transform.parent.gameObject;
+            if (!otherPlayer.GetComponent<PlayerType>().isAlive)
+            {
+                playerHUD.reportButton.interactable = false;
+            }
+        }
+    }
+    public override void OnStartAuthority()
+    {
+        base.OnStartAuthority();
+
     }
     private void Update()
     {
-        if (canVent && Input.GetKeyDown(interactKey)&&!inVent)
+        if (canVent && Input.GetKeyDown(interactKey) && !inVent)
         {
             UpdateVentState(true);
-        }else if (inVent && Input.GetKeyDown(interactKey))
+        }
+        else if (inVent && Input.GetKeyDown(interactKey))
         {
             UpdateVentState(false);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    [Command(requiresAuthority =false)]
+    public void KillTarget()
     {
-        /*if (isImposter && collision.tag == "Vent")
-        {
-            canVent = false;
-            currentVent.GetComponent<Vent>().ventPanel.SetActive(false);
-            currentVent = null;
-        }*/
+        killTarget.GetComponent<PlayerType>().isAlive = false;
+        //this.transform.position = killTarget.transform.position;
+        MoveImposter(killTarget.transform.position);
     }
+    [ClientRpc]
+    public void MoveImposter(Vector3 newPos)
+    {
+        this.transform.position = newPos;
+    }
+
+    IEnumerator KillTimer(int duration)
+    {
+        int i = duration;
+        while(i>0)
+        {
+            yield return new WaitForSeconds(1);
+        }
+    }
+
     public void UpdateVentState(bool state)
     {
         inVent = state;

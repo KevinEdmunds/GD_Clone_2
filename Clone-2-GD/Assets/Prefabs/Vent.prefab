@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 8463652158914097129}
   - component: {fileID: 8463652158914097130}
   - component: {fileID: 8469065772365979967}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vent
   m_TagString: Vent
   m_Icon: {fileID: 0}

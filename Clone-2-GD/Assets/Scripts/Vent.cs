@@ -10,9 +10,14 @@ public class Vent : MonoBehaviour
     public GameObject ventPanel;
     public List<GameObject> arrowList = new List<GameObject>();
     public float arrowDistanceFromCentre;
+    public bool allVentsConnected = false;
     private void Start()
     {
-        ventList = GameObject.FindGameObjectsWithTag("Vent");
+        if(allVentsConnected)
+        {
+            ventList = GameObject.FindGameObjectsWithTag("Vent");
+        }
+
         ShowOtherVents();
         ventPanel.SetActive(false);
     }

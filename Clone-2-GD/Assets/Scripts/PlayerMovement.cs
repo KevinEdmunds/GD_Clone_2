@@ -11,7 +11,15 @@ public class PlayerMovement : NetworkBehaviour
     PlayerActions playerActions;
     private Rigidbody2D rb; // Reference to the Rigidbody2D component
     private Vector2 movement; // Stores the movement input
+    public GameObject fovThing;
+    public PlayerType playerType;
+    [SyncVar]
+    public int numOfPlayers=0;
 
+    public override void OnStartLocalPlayer()
+    {
+        Instantiate(fovThing, this.transform);
+    }
     void Start()
     {
         playerActions = this.GetComponent<PlayerActions>();
@@ -24,7 +32,7 @@ public class PlayerMovement : NetworkBehaviour
         {
             return;
         }
-        if(!playerActions.inVent)
+        if(!playerActions.inVent||playerType.isAlive)
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
@@ -34,25 +42,9 @@ public class PlayerMovement : NetworkBehaviour
             movement.x = 0;
             movement.y = 0;
         }
-        if(movement!=Vector2.zero)
-        {
-            UpdateServerMovement();
-        }
-    }
-    [Command] 
-    void UpdateServerMovement()
-    {
-        UpdateClientMovement();
-    }
-
-    [ClientRpc]
-    void UpdateClientMovement()
-    {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
     void FixedUpdate()
     {
-        // Move the player based on input
-
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }
