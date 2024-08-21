@@ -1,0 +1,733 @@
+fileFormatVersion: 2
+guid: a22671890e920724f98b22c9bf109d4e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4272810918805996089
+    second: VotingScreen
+  - first:
+      213: 6592779862445121492
+    second: Voting_SreenPanel
+  - first:
+      213: -939640487337881716
+    second: VotingScreen_PanelCracked
+  - first:
+      213: -1622053711257232787
+    second: Voting_Chat
+  - first:
+      213: -8020855103379235347
+    second: Voting_PlayersDisplay
+  - first:
+      213: 6743868822895207432
+    second: Voting_ChatPanel
+  - first:
+      213: -3858181160027346903
+    second: Voting_WeetNie
+  - first:
+      213: 792101615084430933
+    second: Voting_CharacterDisplay
+  - first:
+      213: 2043870746359362590
+    second: Voting_Votes
+  - first:
+      213: 5783651956261851738
+    second: Voting_ChatNewMes
+  - first:
+      213: 8928368808269475384
+    second: Voting_ChatSend
+  - first:
+      213: -8010303905305037206
+    second: Voting_VotedCheck
+  - first:
+      213: 8011552189819710104
+    second: Voting_IVoted
+  - first:
+      213: -1263351004172459771
+    second: Voting_Dead
+  - first:
+      213: 5149178455643610579
+    second: Voting_WhoCalledTheMeeting
+  - first:
+      213: -5955309838120919758
+    second: Voting_SkippedVoting
+  - first:
+      213: 8835598603356439482
+    second: Voting_SquareX
+  - first:
+      213: -7500413304728513350
+    second: Voting_SquareConfirm
+  - first:
+      213: 933828879543441522
+    second: Voting_ChatIcon
+  - first:
+      213: 5888376810496680535
+    second: Voting_Star
+  - first:
+      213: 143276061194792792
+    second: Voting_CancelText
+  - first:
+      213: 7398257984459182448
+    second: Voting_ConfirmText
+  - first:
+      213: 2148978968821060409
+    second: Voting_VoteText
+  - first:
+      213: -2282764405532561678
+    second: Voting_SkipVote
+  - first:
+      213: 5555981636153191438
+    second: Voting_Proceed
+  - first:
+      213: 1128311049539374514
+    second: Voting_AnotheX
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: VotingScreen
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 145
+        width: 857
+        height: 581
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93287df64e21c4b30800000000000000
+      internalID: 4272810918805996089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_SreenPanel
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 215
+        width: 736
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dfd367da524e7b50800000000000000
+      internalID: 6592779862445121492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VotingScreen_PanelCracked
+      rect:
+        serializedVersion: 2
+        x: 1615
+        y: 215
+        width: 740
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8f86a784f9b5f2f0800000000000000
+      internalID: -939640487337881716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_Chat
+      rect:
+        serializedVersion: 2
+        x: 2363
+        y: 230
+        width: 701
+        height: 496
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6a98ed5ebe4d79e0800000000000000
+      internalID: -1622053711257232787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_PlayersDisplay
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 81
+        width: 546
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ded9330a7c230b090800000000000000
+      internalID: -8020855103379235347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_ChatPanel
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 87
+        width: 602
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8042080c6f8079d50800000000000000
+      internalID: 6743868822895207432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_WeetNie
+      rect:
+        serializedVersion: 2
+        x: 1183
+        y: 76
+        width: 347
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 928277d2dacf47ac0800000000000000
+      internalID: -3858181160027346903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_CharacterDisplay
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 22
+        width: 56
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 556ee11e83c1efa00800000000000000
+      internalID: 792101615084430933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_Votes
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 44
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e14ff8b6d994d5c10800000000000000
+      internalID: 2043870746359362590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_ChatNewMes
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 39
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a521b75afc8a34050800000000000000
+      internalID: 5783651956261851738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_ChatSend
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 29
+        width: 41
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83e64986020f7eb70800000000000000
+      internalID: 8928368808269475384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_VotedCheck
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 42
+        width: 36
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a667e5dd90fa5d090800000000000000
+      internalID: -8010303905305037206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_IVoted
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 33
+        width: 38
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89ae4b50540ce2f60800000000000000
+      internalID: 8011552189819710104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_Dead
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 8
+        width: 66
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 501eaa984fca77ee0800000000000000
+      internalID: -1263351004172459771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_WhoCalledTheMeeting
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 7
+        width: 71
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd5bbd168e857740800000000000000
+      internalID: 5149178455643610579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_SkippedVoting
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 28
+        width: 65
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23dd96b314d7a5da0800000000000000
+      internalID: -5955309838120919758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_SquareX
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 20
+        width: 47
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab38ff2ed1a5e9a70800000000000000
+      internalID: 8835598603356439482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_SquareConfirm
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 20
+        width: 49
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab41b0796dd29e790800000000000000
+      internalID: -7500413304728513350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_ChatIcon
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 10
+        width: 53
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27810361b60a5fc00800000000000000
+      internalID: 933828879543441522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_Star
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 29
+        width: 40
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7526d4dd287b7b150800000000000000
+      internalID: 5888376810496680535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_CancelText
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 45
+        width: 78
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85f255c81d40df100800000000000000
+      internalID: 143276061194792792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_ConfirmText
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 46
+        width: 77
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07113607074eba660800000000000000
+      internalID: 7398257984459182448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_VoteText
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 42
+        width: 78
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9335d528cf4b2dd10800000000000000
+      internalID: 2148978968821060409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_SkipVote
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 45
+        width: 109
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fe63562eddf150e0800000000000000
+      internalID: -2282764405532561678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_Proceed
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 9
+        width: 123
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0c21897cdfca1d40800000000000000
+      internalID: 5555981636153191438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Voting_AnotheX
+      rect:
+        serializedVersion: 2
+        x: 1244
+        y: 4
+        width: 64
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd41f7ebe098af00800000000000000
+      internalID: 1128311049539374514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
