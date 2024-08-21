@@ -6,14 +6,16 @@ TagManager:
   tags:
   - Vent
   - Leaf
+  - PlayerHitbox
+  - ViewRenderer
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Obstacle
   - Water
   - UI
-  - 
+  - Target
   - 
   - 
   - 
