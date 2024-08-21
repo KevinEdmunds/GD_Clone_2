@@ -7,13 +7,17 @@ public class ExitTaskButton : MonoBehaviour
 {
     public GameObject taskPanel;
 
+
     void Start()
     {
-        GetComponent<Button>().onClick.AddListener(ExitCardTask);
+
+       GetComponent<Button>().onClick.AddListener(ExitCardTask);
     }
 
     void ExitCardTask()
     {
         taskPanel.gameObject.SetActive(false);
     }
+
+
 }

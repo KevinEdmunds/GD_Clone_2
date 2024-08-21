@@ -5,6 +5,7 @@ using TMPro;
 public class UseButtonHandler : MonoBehaviour
 {
     public GameObject cardSwipeTaskPanel;
+    public CardSwipeTask cardSwipeTask;
 
     void Start()
     {
@@ -17,8 +18,11 @@ public class UseButtonHandler : MonoBehaviour
 
     void UseTask()
     {
-       
-        cardSwipeTaskPanel.SetActive(true);
+        if (cardSwipeTask.canDoTask)
+        {
+            cardSwipeTaskPanel.SetActive(true);
+        }
+     
     }
 
 }

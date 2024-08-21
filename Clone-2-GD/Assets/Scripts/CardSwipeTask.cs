@@ -4,6 +4,8 @@ using TMPro;
 
 public class CardSwipeTask : MonoBehaviour
 {
+    public bool canDoTask;
+
     public GameObject taskPanel;
     public Slider swipeSlider;
     public TaskManager taskManager;
