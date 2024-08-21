@@ -49,6 +49,13 @@ MonoBehaviour:
   syncInterval: 0
   PlayerCount: 0
   CurrentGameState: 0
+  PLManager: {fileID: 0}
+  myNetwork: {fileID: 0}
+  PlayerNumbers: {fileID: 0}
+  PlayerID: {fileID: 0}
+  VotingScreen: {fileID: 0}
+  PLPanelPrefab: {fileID: 0}
+  ContentParent: {fileID: 0}
 --- !u!114 &3258713376546921279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +70,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneId: 0
   _assetId: 942975806
-  serverOnly: 1
-  visibility: 2
+  serverOnly: 0
+  visibility: 0
   hasSpawned: 0

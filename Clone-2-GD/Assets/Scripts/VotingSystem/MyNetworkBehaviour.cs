@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-using System;
+
 
 public class MyNetworkBehaviour : NetworkManager
 {
     [SerializeField]
-    private GameObject GMVSObj;
+    private GameObject GMVSObj, VotingScreen;
     [SerializeField]
     private GameManagerVS managerVS;
+    [SerializeField]
+    private Transform Canvas;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+     VotingScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,9 +39,11 @@ public class MyNetworkBehaviour : NetworkManager
 
     public override void OnStartServer()
     {
+      //  GameObject VSObj = Instantiate(VotingScreen, Canvas);
+     //   NetworkServer.Spawn(VSObj);
         base.OnStartServer();
         
-
+        
     }
 
     public override void OnStopServer()
@@ -65,6 +69,12 @@ public class MyNetworkBehaviour : NetworkManager
         managerVS.RemovePlayer();
         base.OnServerDisconnect(conn);
        
+    }
+
+
+    public void PutPanelsOnServer(GameObject panel)
+    {
+        NetworkServer.Spawn(panel);
     }
 
 }
