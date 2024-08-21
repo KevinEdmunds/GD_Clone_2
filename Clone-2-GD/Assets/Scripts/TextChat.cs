@@ -30,10 +30,13 @@ public class TextChat : NetworkBehaviour
     }
 
     public void GetMessage()
-    {
-        string input = textInput.text;
-        UploadMessage(input);
-        textInput.text = "";
+    {       
+        if (!string.IsNullOrWhiteSpace(textInput.text))
+        {
+            string input = textInput.text;
+            UploadMessage(input);
+            textInput.text = "";
+        }
     }
 
     [ClientRpc]

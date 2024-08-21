@@ -78,6 +78,17 @@ public class PlayerActions : NetworkBehaviour
         base.OnStartAuthority();
 
     }
+    private void Update()
+    {
+        if (canVent && Input.GetKeyDown(interactKey) && !inVent)
+        {
+            UpdateVentState(true);
+        }
+        else if (inVent && Input.GetKeyDown(interactKey))
+        {
+            UpdateVentState(false);
+        }
+    }
 
     [Command(requiresAuthority =false)]
     public void KillTarget()
@@ -91,16 +102,7 @@ public class PlayerActions : NetworkBehaviour
     {
         this.transform.position = newPos;
     }
-    private void Update()
-    {
-        if (canVent && Input.GetKeyDown(interactKey)&&!inVent)
-        {
-            UpdateVentState(true);
-        }else if (inVent && Input.GetKeyDown(interactKey))
-        {
-            UpdateVentState(false);
-        }
-    }
+
     IEnumerator KillTimer(int duration)
     {
         int i = duration;

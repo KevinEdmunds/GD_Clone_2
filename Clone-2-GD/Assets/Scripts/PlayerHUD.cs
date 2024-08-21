@@ -39,4 +39,14 @@ public class PlayerHUD : NetworkBehaviour
     {
         //Link to command to call logic to start vote
     }
+
+    public void UseButton()
+    {
+
+    }
+
+    public void Sabotage()
+    {
+        //link to command to spawn "task" for player
+    }
 }
