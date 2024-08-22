@@ -6,18 +6,24 @@ using Mirror;
 public class PlayerLobbyManager : NetworkBehaviour
 {
     [SyncVar(hook = nameof(SetPlayerName))]
-    public string playerName;
+    public string playerName="";
 
     [SyncVar(hook = nameof(OnColorChanged))]
-    public Color playerColor;
+    public Color playerColor=Color.white;
+
+    [SyncVar (hook = nameof(OnPlayerReady))]
+    public bool playerReady = false;
 
     public GameObject playerLobbyHUD;
     public Text playerNameText;
     public bool playerNameReady = false;
+    public bool playerColorReady = false;
     public Button startGameButton;
     public GameObject hostButton;
     public Button submitName;
     public InputField nameInput;
+
+    public Text playerReadyText;
 
     public GameObject[] players;
     public List<Color> playerColors = new List<Color>();
@@ -26,8 +32,10 @@ public class PlayerLobbyManager : NetworkBehaviour
     private List<Color> availableColors = new List<Color>
     {
         Color.red, Color.blue, Color.green, Color.yellow,
-        Color.magenta, Color.cyan, new Color(1.0f, 0.5f, 0.0f), Color.gray
+       Color.magenta, Color.cyan, new Color(1.0f, 0.5f, 0.0f), Color.gray,
+        new Color(0.5f, 0.25f, 0.75f), new Color(1.0f, 0.75f, 0.8f)
     };
+
 
     public List<Button> buttonList = new List<Button>();
     public GameObject colorButton;
@@ -38,7 +46,7 @@ public class PlayerLobbyManager : NetworkBehaviour
         if (isLocalPlayer)
         {
             playerLobbyHUD.SetActive(true);
-            UpdateAvailableColors(); // Update UI based on available colors
+            UpdateAllAvailableColors(); // Update UI based on available colors
         }
         else
         {
@@ -53,6 +61,27 @@ public class PlayerLobbyManager : NetworkBehaviour
         submitName.onClick.AddListener(SendName);
         CreateColorList();
     }
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if(isLocalPlayer)
+        {
+            UpdateAllAvailableColors(); // Update UI based on available colors
+        }
+        if (isServer&&isLocalPlayer)       // if the player is the host
+        {
+            hostButton.GetComponent<Button>().interactable = false;
+           
+            LobbyManager lobby = GameObject.FindObjectOfType<LobbyManager>();
+            lobby.host = this;
+        }
+    }
+    public void UpdateHostButton()
+    {
+        Debug.Log("button updated : "+this.gameObject.name);
+        hostButton.GetComponent<Button>().interactable = true;
+    }
+
 
     void CreateColorList()
     {
@@ -60,8 +89,6 @@ public class PlayerLobbyManager : NetworkBehaviour
         {
             GameObject colButton = Instantiate(colorButton, colorPalette.transform);
             colButton.GetComponent<Image>().color = col;
-
-            // Add an event listener to the button for changing color
             colButton.GetComponent<Button>().onClick.AddListener(() => CmdChangeColor(col));
             buttonList.Add(colButton.GetComponent<Button>());
         }
@@ -76,10 +103,38 @@ public class PlayerLobbyManager : NetworkBehaviour
         }
     }
 
+    [Command(requiresAuthority =false)]
+    public void CheckPlayerReady()
+    {
+        Debug.Log("Checking that the player has a name: " + !string.IsNullOrWhiteSpace(playerName) +" and checking that the player has a color" +  (playerColor != Color.white));
+  
+        if(playerNameReady)
+        {
+            if (playerColorReady)
+            {
+                playerReady = true;
+            }
+            else
+            {
+                playerReady = false;
+            }
+        }
+        else
+        {
+            playerReady = false;
+        }
+    }
+
+    void OnPlayerReady(bool oldState, bool newState)
+    {
+        playerReadyText.text = "This player is ready";
+    }
+
     [Command]
     public void CmdChangeName(string newName)
     {
         playerName = newName;
+        CheckPlayerReady();
     }
 
     public void SetPlayerName(string oldName, string newName)
@@ -92,11 +147,11 @@ public class PlayerLobbyManager : NetworkBehaviour
     public void CmdChangeColor(Color newColor)
     {
         playerColor = newColor;
+        CheckPlayerReady();
     }
 
     void UpdateAllAvailableColors()
     {
-        Debug.Log(this.name);
         if(isLocalPlayer)
         {
             players = GameObject.FindGameObjectsWithTag("Player");
@@ -113,11 +168,11 @@ public class PlayerLobbyManager : NetworkBehaviour
                 button.interactable = !playerColors.Contains(buttonColor);
             }
         }
-
     }
 
     void OnColorChanged(Color oldColor, Color newColor)
     {
+        playerColorReady = true;
         UpdateColor(newColor);
 
         PlayerLobbyManager[] pLM = FindObjectsOfType<PlayerLobbyManager>();
@@ -134,15 +189,6 @@ public class PlayerLobbyManager : NetworkBehaviour
         if (GetComponent<SpriteRenderer>() != null)
         {
             GetComponent<SpriteRenderer>().color = col;
-        }
-    }
-
-    void UpdateAvailableColors()
-    {
-        // Request the server to update the available colors
-        if (isLocalPlayer)
-        {
-            CmdChangeColor(playerColor);
         }
     }
 }
