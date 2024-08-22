@@ -9,15 +9,17 @@ public class PlayerHUD : NetworkBehaviour
     public GameObject imposterHUD, playerHUD;
     public PlayerType playerType;
     public PlayerActions playerActions;
+    public GameObject viewLimiter;
     public Button ventButton, useButton, reportButton, killButton, sabotageButton;
 
     // Initialize HUD elements
-    void Start()
+    void Start()        //sets the player object up when the game begins
     {
         if(isLocalPlayer)
         {
+            viewLimiter.SetActive(true);
             GameObject.FindGameObjectWithTag("MainCamera").transform.parent = this.transform;
-            playerHUD.SetActive(true);
+          //  playerHUD.SetActive(true);
             ventButton.interactable = false;
             killButton.interactable = false;
             reportButton.interactable = false;
