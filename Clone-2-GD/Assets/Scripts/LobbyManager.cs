@@ -12,10 +12,12 @@ public class LobbyManager : NetworkBehaviour
 
     public Button hostButton;
     public PlayerLobbyManager host;
+    
 
     public bool enoughPlayers = false;
     public Text playerCountText;
     public bool gameReady=false;
+
     void OnPlayerCountChanged()
     {
         enoughPlayers = (playerCount >= minPlayers && playerCount <= maxPlayers);
@@ -27,11 +29,12 @@ public class LobbyManager : NetworkBehaviour
         {
             playerCount = NetworkServer.connections.Count;
             OnPlayerCountChanged();
+            CheckIfGameIsReady();
+            //Debug.Log(host);
+            host.UpdateHostButton(gameReady);
         }
-        CheckIfGameIsReady();
-        host.UpdateHostButton(gameReady);
-    }
 
+    }
 
     private void CheckIfGameIsReady()
     {
@@ -52,6 +55,5 @@ public class LobbyManager : NetworkBehaviour
             }
         }
         gameReady = true;
-
     }
 }

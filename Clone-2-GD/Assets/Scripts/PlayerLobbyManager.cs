@@ -40,13 +40,13 @@ public class PlayerLobbyManager : NetworkBehaviour
     public List<Button> buttonList = new List<Button>();
     public GameObject colorButton;
     public GameObject colorPalette;
+    PlayerSceneDataTransfer playerData;
 
     private void Start()
     {
         if (isLocalPlayer)
         {
-            playerLobbyHUD.SetActive(true);
-            UpdateAllAvailableColors(); // Update UI based on available colors
+            playerData = GameObject.FindObjectOfType<PlayerSceneDataTransfer>();
         }
         else
         {
@@ -78,7 +78,7 @@ public class PlayerLobbyManager : NetworkBehaviour
     }
     public void UpdateHostButton(bool state)
     {
-        Debug.Log("button updated : "+this.gameObject.name);
+        //Debug.Log("button updated : "+this.gameObject.name);
         hostButton.GetComponent<Button>().interactable = state;
     }
 
@@ -98,6 +98,7 @@ public class PlayerLobbyManager : NetworkBehaviour
     {
         if (!string.IsNullOrWhiteSpace(nameInput.text))
         {
+            playerData.SetPlayerName(nameInput.text);
             CmdChangeName(nameInput.text);
             nameInput.text = "";
         }
@@ -106,7 +107,7 @@ public class PlayerLobbyManager : NetworkBehaviour
     [Command(requiresAuthority =false)]
     public void CheckPlayerReady()
     {
-        Debug.Log("Checking that the player has a name: " + !string.IsNullOrWhiteSpace(playerName) +" and checking that the player has a color" +  (playerColor != Color.white));
+        //Debug.Log("Checking that the player has a name: " + !string.IsNullOrWhiteSpace(playerName) +" and checking that the player has a color" +  (playerColor != Color.white));
   
         if(playerNameReady)
         {
@@ -148,6 +149,16 @@ public class PlayerLobbyManager : NetworkBehaviour
     {
         playerColor = newColor;
         CheckPlayerReady();
+        StorePlayerColor(playerColor);
+    }
+    [ClientRpc]
+    public void StorePlayerColor(Color col)
+    {
+        if(isLocalPlayer)
+        {
+            playerData.SetPlayerColor(col);
+        }
+
     }
 
     void UpdateAllAvailableColors()
@@ -189,6 +200,15 @@ public class PlayerLobbyManager : NetworkBehaviour
         if (GetComponent<SpriteRenderer>() != null)
         {
             GetComponent<SpriteRenderer>().color = col;
+        }
+    }
+
+    [Command(requiresAuthority =false)]
+    public void StartTheGame()
+    {
+        if(NetworkServer.active)
+        {
+            NetworkManager.singleton.ServerChangeScene("SampleScene");
         }
     }
 }

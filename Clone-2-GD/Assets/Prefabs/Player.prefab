@@ -602,6 +602,7 @@ MonoBehaviour:
   isAlive: 1
   playerActions: {fileID: 2710432407965512608}
   playerHUD: {fileID: -3136668454650276990}
+  playerLobby: {fileID: 7185549405942326281}
 --- !u!114 &-3136668454650276990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,6 +622,7 @@ MonoBehaviour:
   playerHUD: {fileID: 3664540324313900103}
   playerType: {fileID: 1515527506678242955}
   playerActions: {fileID: 2710432407965512608}
+  lobbyHUD: {fileID: 3649899929194803211}
   viewLimiter: {fileID: 282351875625522739}
   ventButton: {fileID: 3058702231653085789}
   useButton: {fileID: 2303093752597115440}
@@ -918,7 +920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4566743678605982440
 Transform:
   m_ObjectHideFlags: 0
@@ -1400,7 +1402,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 546175294571061965}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7185549405942326281}
+        m_TargetAssemblyTypeName: PlayerLobbyManager, Assembly-CSharp
+        m_MethodName: StartTheGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6831505972602255812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,7 +2231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8702720484030367396
 Transform:
   m_ObjectHideFlags: 0
