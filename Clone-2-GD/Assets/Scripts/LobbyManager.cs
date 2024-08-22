@@ -28,25 +28,30 @@ public class LobbyManager : NetworkBehaviour
             playerCount = NetworkServer.connections.Count;
             OnPlayerCountChanged();
         }
-        if(enoughPlayers)
-        {
-            CheckIfGameIsReady();
-        }
+        CheckIfGameIsReady();
+        host.UpdateHostButton(gameReady);
     }
 
 
     private void CheckIfGameIsReady()
     {
+        if(!enoughPlayers)
+        {
+            gameReady = false;
+            return;
+        }
+
         PlayerLobbyManager[] playersInLobby= FindObjectsOfType<PlayerLobbyManager>();
 
         foreach(PlayerLobbyManager player in playersInLobby)
         {
             if (!player.playerReady)
             {
+                gameReady = false;
                 return;
             }
         }
-        Debug.Log("The game can Start");
-        host.UpdateHostButton();
+        gameReady = true;
+
     }
 }

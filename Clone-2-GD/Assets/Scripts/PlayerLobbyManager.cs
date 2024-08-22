@@ -76,10 +76,10 @@ public class PlayerLobbyManager : NetworkBehaviour
             lobby.host = this;
         }
     }
-    public void UpdateHostButton()
+    public void UpdateHostButton(bool state)
     {
         Debug.Log("button updated : "+this.gameObject.name);
-        hostButton.GetComponent<Button>().interactable = true;
+        hostButton.GetComponent<Button>().interactable = state;
     }
 
 

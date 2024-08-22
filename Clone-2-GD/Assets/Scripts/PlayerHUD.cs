@@ -19,7 +19,7 @@ public class PlayerHUD : NetworkBehaviour
         {
             viewLimiter.SetActive(true);
             GameObject.FindGameObjectWithTag("MainCamera").transform.parent = this.transform;
-            playerHUD.SetActive(true);
+          //  playerHUD.SetActive(true);
             ventButton.interactable = false;
             killButton.interactable = false;
             reportButton.interactable = false;

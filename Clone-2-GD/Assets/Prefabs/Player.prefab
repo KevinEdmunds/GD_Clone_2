@@ -648,6 +648,7 @@ MonoBehaviour:
   playerLobbyHUD: {fileID: 3649899929194803211}
   playerNameText: {fileID: 4461067181447406390}
   playerNameReady: 0
+  playerColorReady: 0
   startGameButton: {fileID: 446179809491634964}
   hostButton: {fileID: 6710506753701978431}
   submitName: {fileID: 7007048938539871002}
@@ -2216,7 +2217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8702720484030367396
 Transform:
   m_ObjectHideFlags: 0

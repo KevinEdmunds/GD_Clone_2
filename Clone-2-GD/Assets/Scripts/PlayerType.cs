@@ -32,7 +32,6 @@ public class PlayerType : NetworkBehaviour
     public override void OnStartAuthority()
     {
         base.OnStartAuthority();
-        CmdSetRole(); // Command to set the player's role on the server
     }
 
     // Command to assign the player's role on the server

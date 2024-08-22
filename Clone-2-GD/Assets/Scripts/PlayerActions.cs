@@ -44,6 +44,7 @@ public class PlayerActions : NetworkBehaviour
             }
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (playerType.isImposter)
@@ -94,7 +95,6 @@ public class PlayerActions : NetworkBehaviour
     public void KillTarget()
     {
         killTarget.GetComponent<PlayerType>().isAlive = false;
-        //this.transform.position = killTarget.transform.position;
         MoveImposter(killTarget.transform.position);
     }
     [ClientRpc]
