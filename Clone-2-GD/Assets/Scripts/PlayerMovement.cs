@@ -15,6 +15,7 @@ public class PlayerMovement : NetworkBehaviour
     public PlayerType playerType;
     [SyncVar]
     public int numOfPlayers=0;
+    public bool canMove = true;
 
     public override void OnStartLocalPlayer()
     {
@@ -32,7 +33,7 @@ public class PlayerMovement : NetworkBehaviour
         {
             return;
         }
-        if(!playerActions.inVent||playerType.isAlive)
+        if((!playerActions.inVent||playerType.isAlive)&&canMove)
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
