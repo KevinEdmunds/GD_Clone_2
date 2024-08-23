@@ -101,6 +101,7 @@ public class TaskManager : MonoBehaviour
 
 
      void Start()
+
     {
         numOfTasksCompleted = 0;
     }
