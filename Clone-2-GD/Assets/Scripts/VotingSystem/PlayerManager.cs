@@ -110,7 +110,7 @@ public class PlayerManager : NetworkBehaviour
 
     }
 
-    [Command]
+    [Command(requiresAuthority =false)]
     public void ThisPlayerVoted()
     {
         HAsVoted = true;

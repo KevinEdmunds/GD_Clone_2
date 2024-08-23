@@ -230,7 +230,7 @@ public class GameManagerVS : NetworkBehaviour
         }
     }
 
-    [Command(requiresAuthority = false)]
+    //[Command(requiresAuthority = false)]
     public void PlayerHasVoted()
     {
        PLManager.ThisPlayerVoted();
