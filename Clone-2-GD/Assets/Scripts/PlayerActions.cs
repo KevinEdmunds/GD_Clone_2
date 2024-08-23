@@ -8,6 +8,7 @@ public class PlayerActions : NetworkBehaviour
     public bool canVent = false;
     public bool inVent = false;
     public bool canKill = false;
+    public bool canMove = false;
     public GameObject currentVent = null;
     public GameObject killTarget;
     public KeyCode interactKey;
@@ -44,6 +45,7 @@ public class PlayerActions : NetworkBehaviour
             }
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (playerType.isImposter)
@@ -94,7 +96,6 @@ public class PlayerActions : NetworkBehaviour
     public void KillTarget()
     {
         killTarget.GetComponent<PlayerType>().isAlive = false;
-        //this.transform.position = killTarget.transform.position;
         MoveImposter(killTarget.transform.position);
     }
     [ClientRpc]
