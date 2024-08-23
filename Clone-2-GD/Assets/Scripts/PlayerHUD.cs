@@ -419,7 +419,4 @@ public class PlayerHUD : NetworkBehaviour
             }
         }
         }
-
-
- 
 }
