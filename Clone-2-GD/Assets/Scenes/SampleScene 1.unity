@@ -846,7 +846,7 @@ SpriteRenderer:
   m_Size: {x: 0.94, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &58305641
@@ -2033,7 +2033,7 @@ SpriteRenderer:
   m_Size: {x: 0.94, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &115108795
@@ -7044,8 +7044,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e404127ff718da41952eaeceec5b5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  downloadTaskPanel: {fileID: 1689508938}
-  downloadTask: {fileID: 555556293}
 --- !u!1 &457164563
 GameObject:
   m_ObjectHideFlags: 0
@@ -9104,8 +9102,6 @@ MonoBehaviour:
   minSwipeTime: 0.5
   maxSwipeTime: 1.5
   textAnimator: {fileID: 208896945}
-  originalPositionObject: {fileID: 0}
-  originalPosition: {x: 0, y: 0}
 --- !u!4 &555556287
 Transform:
   m_ObjectHideFlags: 0
@@ -9151,8 +9147,6 @@ MonoBehaviour:
   emptyGarbagePanel: {fileID: 1617379834}
   taskManager: {fileID: 555556288}
   leavesAnimator: {fileID: 416758981}
-  hasCafeBeenCompleted: 0
-  hasStorageBeenCompleted: 0
   chuteCollider: {fileID: 1739683664}
   leverMoveSpeed: 2
   requiredHoldTime: 3
@@ -9232,11 +9226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 114df894a99728b49990ef321b559646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  downloadButton: {fileID: 621453659}
-  downloadSlider: {fileID: 810076015}
-  downloadPanel: {fileID: 1689508938}
-  percentageText: {fileID: 1416934484}
-  taskManager: {fileID: 555556288}
 --- !u!114 &555556294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9249,11 +9238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0903122e524195e4b9bcbb6ffb87697e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uploadButton: {fileID: 81321548}
-  uploadSlider: {fileID: 1180632324}
-  uploadPanel: {fileID: 1939683715}
-  percentageText: {fileID: 1797974088}
-  taskManager: {fileID: 555556288}
 --- !u!1 &556795761
 GameObject:
   m_ObjectHideFlags: 0
@@ -21925,7 +21909,7 @@ SpriteRenderer:
   m_Size: {x: 5.02, y: 3.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1499456533
@@ -23009,7 +22993,7 @@ SpriteRenderer:
   m_Size: {x: 5.02, y: 3.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1578034753
@@ -25256,8 +25240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750eda9e945e7b343914bc21f8f8923a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uploadTaskPanel: {fileID: 1939683715}
-  uploadTask: {fileID: 555556294}
 --- !u!114 &1714146376
 MonoBehaviour:
   m_ObjectHideFlags: 0
