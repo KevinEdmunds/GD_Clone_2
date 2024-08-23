@@ -921,7 +921,7 @@ SpriteRenderer:
   m_Size: {x: 0.94, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &58305641
@@ -2190,7 +2190,7 @@ SpriteRenderer:
   m_Size: {x: 0.94, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &115108795
@@ -2994,11 +2994,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1424116799966815062, guid: ae09f93179cf16146b104b7922416da4, type: 3}
       propertyPath: isImposterList.Array.data[0]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1424116799966815062, guid: ae09f93179cf16146b104b7922416da4, type: 3}
       propertyPath: isImposterList.Array.data[1]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1424116799966815063, guid: ae09f93179cf16146b104b7922416da4, type: 3}
       propertyPath: sceneId
@@ -25424,7 +25424,7 @@ SpriteRenderer:
   m_Size: {x: 5.02, y: 3.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1499456533
@@ -26619,7 +26619,7 @@ SpriteRenderer:
   m_Size: {x: 5.02, y: 3.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1578034753

@@ -132,7 +132,7 @@ public class PlayerHUD : NetworkBehaviour
 
                 if(playerType.isImposter)
                 {
-                    if (sabotageMapPanel != null)
+                    if (sabotageMapPanel == null)
                     {
                         sabotageMapPanel = GameObject.Find("SabotageMapPanel");
                     }
