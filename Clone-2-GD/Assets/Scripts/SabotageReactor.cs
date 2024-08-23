@@ -12,12 +12,16 @@ public class SabotageReactor : MonoBehaviour
     public TMP_Text panelText2;
     public Button button1;
     public Button button2;
+    public Button sabotageButton;
+    public CanvasGroup sabotageButtonCanvasGroup; 
     public SpriteRenderer reactorGlow1;
     public SpriteRenderer reactorGlow2;
     private bool isButton1Held = false;
     private bool isButton2Held = false;
     public bool isReactorSabotaged = false;
-    private float timer = 30.0f; 
+    private float timer = 45.0f;
+    private bool isCooldown = false; // Add a cooldown flag
+
 
     void Start()
     {
@@ -25,6 +29,9 @@ public class SabotageReactor : MonoBehaviour
         AddEventTrigger(button1.gameObject, EventTriggerType.PointerUp, OnButton1Up);
         AddEventTrigger(button2.gameObject, EventTriggerType.PointerDown, OnButton2Down);
         AddEventTrigger(button2.gameObject, EventTriggerType.PointerUp, OnButton2Up);
+
+        //panel1.SetActive(false);
+       // panel2.SetActive(false);
     }
 
     void Update()
@@ -65,16 +72,24 @@ public class SabotageReactor : MonoBehaviour
 
     public void ActivateReactorSabotage()
     {
-        isReactorSabotaged = true;
-        timer = 30.0f; 
-        panel1.SetActive(true);
-        panel2.SetActive(true);
-        button1.gameObject.SetActive(true);
-        button2.gameObject.SetActive(true);
-        panelText1.text = "HOLD  TO  STOP  MELTDOWN";
-        panelText2.text = "HOLD  TO  STOP  MELTDOWN";
-        reactorGlow1.color = Color.red;
-        reactorGlow2.color = Color.red;
+        if (!isCooldown) // Check if cooldown is active
+        {
+            isReactorSabotaged = true;
+            timer = 30.0f;
+            //panel1.SetActive(true);
+           // panel2.SetActive(true);
+            button1.gameObject.SetActive(true);
+            button2.gameObject.SetActive(true);
+            panelText1.text = "HOLD  TO  STOP  MELTDOWN";
+            panelText2.text = "HOLD  TO  STOP  MELTDOWN";
+            reactorGlow1.color = Color.red;
+            reactorGlow2.color = Color.red;
+            StartCoroutine(CooldownCoroutine()); // Start the cooldown coroutine
+        }
+        else
+        {
+            Debug.Log("Wait for cooldown");
+        }
     }
 
     private void OnButton1Down(BaseEventData eventData)
@@ -123,7 +138,7 @@ public class SabotageReactor : MonoBehaviour
         button2.gameObject.SetActive(false);
         reactorGlow1.color = Color.red;
         reactorGlow2.color = Color.red;
-        timer = 30.0f; 
+        timer = 30.0f;
         Debug.Log("Reactor Sabotage stopped");
     }
 
@@ -137,6 +152,25 @@ public class SabotageReactor : MonoBehaviour
         reactorGlow1.color = Color.red;
         reactorGlow2.color = Color.red;
         Debug.Log("Imposter Wins!");
-       
+    }
+
+    private IEnumerator CooldownCoroutine()
+    {
+        isCooldown = true;
+        sabotageButtonCanvasGroup.alpha = 0.5f;
+        sabotageButton.interactable = false;
+        float elapsedTime = 0f;
+        float cooldownDuration = 30f;
+
+        while (elapsedTime < cooldownDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            sabotageButtonCanvasGroup.alpha = Mathf.Lerp(0.5f, 1.0f, elapsedTime / cooldownDuration); // Gradually increase opacity
+            yield return null;
+        }
+
+        sabotageButtonCanvasGroup.alpha = 1.0f; // Ensure button opacity is fully restored
+        sabotageButton.interactable = true; // Enable button interaction
+        isCooldown = false;
     }
 }

@@ -13,14 +13,15 @@ public class EmptyGarbageCafe : MonoBehaviour
     public float leverMoveSpeed = 2.0f;
     public float requiredHoldTime = 3.0f; 
     private bool isPullingLever = false;
+    public GameObject originalPositionObject;
     private Vector2 originalLeverPosition;
     private float holdTimer = 0.0f;
 
     void Start()
     {
-        originalLeverPosition = leverSprite.transform.position;
+        originalLeverPosition = originalPositionObject.transform.position;
 
-        
+
         if (leavesParent != null)
         {
             leavesAnimator = leavesParent.GetComponent<Animator>();
@@ -29,6 +30,8 @@ public class EmptyGarbageCafe : MonoBehaviour
 
     void Update()
     {
+        originalLeverPosition = originalPositionObject.transform.position;
+
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
