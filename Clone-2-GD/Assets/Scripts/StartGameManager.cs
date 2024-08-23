@@ -23,11 +23,14 @@ public class StartGameManager : NetworkBehaviour
         return shortList;
     }
 
+    [Server]
     private void Start()
     {
+        Debug.Log("start game manager working");
         croppedList = GetShortenedRoleList(NetworkServer.connections.Count);
         croppedList = ShuffleList(croppedList);
         AssignPlayerRoles();
+        Debug.Log("start game manager working FULLY");
     }
 
     public List<bool> ShuffleList(List<bool> list)

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Mirror;
 
@@ -70,11 +71,16 @@ public class PlayerLobbyManager : NetworkBehaviour
         }
         if (isServer&&isLocalPlayer)       // if the player is the host
         {
-            hostButton.GetComponent<Button>().interactable = false;
-           
-            LobbyManager lobby = GameObject.FindObjectOfType<LobbyManager>();
-            lobby.host = this;
-            GameObject.FindObjectOfType<LobbyManager>().playerInGame = true;        }
+            if (SceneManager.GetActiveScene().name=="Lobby")
+            {
+                hostButton.GetComponent<Button>().interactable = false;
+
+                LobbyManager lobby = GameObject.FindObjectOfType<LobbyManager>();
+                lobby.host = this;
+                GameObject.FindObjectOfType<LobbyManager>().playerInGame = true;
+            }
+
+        }
     }
     public void UpdateHostButton(bool state)
     {

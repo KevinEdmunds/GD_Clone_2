@@ -14,7 +14,7 @@ public class PlayerType : NetworkBehaviour
     public bool isAlive = true;
 
     public PlayerActions playerActions;
-    public PlayerHUD playerHUD;
+    public PlayerHUDbackup playerHUD;
 
     PlayerSceneDataTransfer playerData;
 

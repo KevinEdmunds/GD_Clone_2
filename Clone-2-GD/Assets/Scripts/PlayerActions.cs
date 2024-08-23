@@ -14,7 +14,8 @@ public class PlayerActions : NetworkBehaviour
     public KeyCode interactKey;
     public PlayerType playerType;
     public Transform thisPlayerHitbox;
-    public PlayerHUD playerHUD;
+    //public PlayerHUD playerHUD;
+    public PlayerHUDbackup playerHUD;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

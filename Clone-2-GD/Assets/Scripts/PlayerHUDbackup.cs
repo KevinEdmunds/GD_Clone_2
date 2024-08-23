@@ -57,6 +57,7 @@ public class PlayerHUDbackup : NetworkBehaviour
     }
     IEnumerator ShowRolePanel()
     {
+        Debug.Log("tHIS IS WORKING");
         playerActions.canMove = false;
         playerRolePanel.SetActive(true);
         yield return new WaitForSeconds(3);

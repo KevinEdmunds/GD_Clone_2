@@ -647,7 +647,7 @@ MonoBehaviour:
   interactKey: 101
   playerType: {fileID: 1515527506678242955}
   thisPlayerHitbox: {fileID: 0}
-  playerHUD: {fileID: 0}
+  playerHUD: {fileID: -428179878259136748}
 --- !u!114 &2710432407965512609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -757,7 +757,7 @@ MonoBehaviour:
   isImposter: 0
   isAlive: 1
   playerActions: {fileID: 2710432407965512608}
-  playerHUD: {fileID: 0}
+  playerHUD: {fileID: -428179878259136748}
   playerLobby: {fileID: 7185549405942326281}
 --- !u!114 &7185549405942326281
 MonoBehaviour:
@@ -807,7 +807,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   imposterHUD: {fileID: 2804001198995738277}
-  playerHUD: {fileID: 3664540324313900103}
+  playerHUD: {fileID: 8085152693508358616}
   playerType: {fileID: 1515527506678242955}
   playerActions: {fileID: 2710432407965512608}
   lobbyHUD: {fileID: 3649899929194803211}
