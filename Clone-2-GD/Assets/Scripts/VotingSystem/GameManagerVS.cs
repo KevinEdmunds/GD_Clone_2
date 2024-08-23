@@ -46,6 +46,7 @@ public class GameManagerVS : NetworkBehaviour
     private float TimeLeft, DisplayTime;
     [SerializeField]
     private float SetTime, minutes, seconds, SetSpaceTimer;
+    [SerializeField]
     [SyncVar]
     private bool TimerOn = false, TimerDPOn = false;
     public enum GameState
@@ -59,10 +60,12 @@ public class GameManagerVS : NetworkBehaviour
     {
         // NetworkServer.Spawn(gameObject);
         CurrentGameState = GameState.Normal;
-        
-       // Debug.Log("Server is: " + isServer);
 
-        //  VotingScreen.SetActive(false);
+        // Debug.Log("Server is: " + isServer);
+
+        ProceedButton.SetActive(false);
+
+        VotingScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -156,13 +159,15 @@ public class GameManagerVS : NetworkBehaviour
 
         if (NewState == GameState.Normal)
         {
-           
+            ProceedButton.SetActive(false);
+            VotingScreen.SetActive(false);
         }
 
         else
         {
             
             VotingScreen.SetActive(true);
+            ProceedButton.SetActive(false);
 
             //SetGameToVoting();
         }
@@ -171,7 +176,7 @@ public class GameManagerVS : NetworkBehaviour
     [Command(requiresAuthority = false)]
     private void CmdSetGameToVoting()
     {
-        CurrentGameState = GameManagerVS.GameState.Voting;
+       CurrentGameState = GameManagerVS.GameState.Voting;
         VotingScreen.SetActive(true);
         ProceedButton.SetActive(false);
 
@@ -189,7 +194,7 @@ public class GameManagerVS : NetworkBehaviour
     [Command(requiresAuthority = false)]
     private void CmdSetGameToNormal()
     {
-        //VotingScreen.SetActive(false);
+        VotingScreen.SetActive(false);
         ProceedButton.SetActive(false);
         CurrentGameState = GameManagerVS.GameState.Normal;
 
@@ -200,20 +205,40 @@ public class GameManagerVS : NetworkBehaviour
         TimerOn = false;
         TimeLeft = SetTime;
         VotingScreen.SetActive(false);
-      // PLManager.HAsVoted = false;
+        PLManager.HasVoted = false;
 
     }
 
+    //public void CheckHostForChange()//Call this to run CRPCChangeStateOfGame()
+    //{
+    //    if (!NetworkServer.active)
+    //    {
+    //        HstCSoG();
+    //    }
+
+    //    else
+    //    {
+    //        CRPCChangeStateOfGame();
+    //    }
+
+    //}
+
     //[Command(requiresAuthority = false)]
+    //private void HstCSoG()
+    //{
+    //    CRPCChangeStateOfGame();
+    //}
+
+  
     public void ChangeStateOfGame()
     {
        // Debug.Log("Eenkeer");
         if (CurrentGameState == GameManagerVS.GameState.Normal)
         {
            // Debug.Log("Normal");
-            CurrentGameState = GameManagerVS.GameState.Voting;
+           CurrentGameState = GameManagerVS.GameState.Voting;
             VotingScreen.SetActive(true);
-            ProceedButton.SetActive(false);
+           ProceedButton.SetActive(false);
             PLManager.CmdCheckStatus();
             CmdSetGameToVoting();
 
@@ -243,33 +268,51 @@ public class GameManagerVS : NetworkBehaviour
 
     public void skipVote()
     {
-        PlayerHasVoted();
-       
+        Debug.Log("Player has initiated the voting process.");
 
+        PLManager.ThisPlayerVoted(); 
+        StartCoroutine(WaitForVoteConfirmation());
+    }
+
+    private IEnumerator WaitForVoteConfirmation()
+    {
+        // Wait until the player's vote is confirmed
+        while (!PLManager.HasVoted)
+        {
+            yield return null; // Wait for the next frame
+        }
+
+        // Once the vote is confirmed
         foreach (Transform transform in ContentParent)
         {
-            transform.gameObject.GetComponent<PlayerPanelScript>().button.SetActive(false);
+            PlayerPanelScript panelScript = transform.gameObject.GetComponent<PlayerPanelScript>();
+            panelScript.button.SetActive(false);
+          //  Debug.Log($"Disabling vote button for Player Panel ID: {panelScript.PanelId}");
 
-            if (transform.gameObject.GetComponent<PlayerPanelScript>().PanelId == PLManager.PlayerId)
+            if (panelScript.PanelId == PLManager.PlayerId)
             {
-                transform.gameObject.GetComponent<PlayerPanelScript>().CMdThisPlayerVoted();
-
+              //  Debug.Log($"Executing CMdThisPlayerVoted for Player Panel ID: {panelScript.PanelId}");
+                panelScript.CMdThisPlayerVoted();
             }
         }
 
         CheckIfEveryOneVoted();
     }
 
+
     private void CheckIfEveryOneVoted()
     {
+
+        //Debug.Log("Start of the check");
         bool everyOneVoted = true;
         GameObject[] playerParent = GameObject.FindGameObjectsWithTag("Player");
 
         foreach (GameObject transform in playerParent)
         {
             PlayerManager playerManager = transform.gameObject.GetComponent<PlayerManager>();
+           // Debug.Log("Player " + playerManager.PlayerId + " voting status is: " + playerManager.HasVoted);
 
-            if (!playerManager.HAsVoted)
+            if (!playerManager.HasVoted)
             {
                 everyOneVoted = false;
             }
@@ -277,30 +320,40 @@ public class GameManagerVS : NetworkBehaviour
 
         if (everyOneVoted)
         {
+           // Debug.Log("done");
             VoteDone();
         }
     }
 
    
+    
     public void VoteDone()
     {
-        ShowVotes();
-        ProceedButton.SetActive(true);
-            
+        if (!NetworkServer.active)
+        {
+            PBFromHost();
+
+        }
+
+        else
+        {
+            CRPCSetProceedActiveF();
+        }
+
     }
 
-    private void ShowVotes()
+   [Command(requiresAuthority = false)]
+   public void PBFromHost()
     {
-        //foreach (Transform transform in ContentParent)
-        //{
-        //    int Totalvotes = transform.gameObject.GetComponent<PlayerPanelScript>().AmountOfvotes;
-        //    Transform Parent = transform.gameObject.GetComponent<PlayerPanelScript>().HowManyVotes.transform;
-
-        //    for (int i = 0; i < Totalvotes; i++)
-        //    {
-        //        Parent.GetChild(i).gameObject.SetActive(true);
-        //    }
-        //}
+        CRPCSetProceedActiveF();
+    }
+    
+    [ClientRpc]
+    private void CRPCSetProceedActiveF()
+    {
+       
+        ProceedButton.SetActive(true);
+        TimeLeft = 0;
     }
 
     public void PressProceedDone()
@@ -308,7 +361,7 @@ public class GameManagerVS : NetworkBehaviour
 
         if (!NetworkServer.active)
         {
-            CmdFunctionFromHost();
+            CmdKilledFromHost();
          
 
         }
@@ -320,7 +373,7 @@ public class GameManagerVS : NetworkBehaviour
     }
 
     [Command(requiresAuthority = false)]
-    public void CmdFunctionFromHost()
+    public void CmdKilledFromHost()
     {
         CRpcFuntionOnClients();
         
@@ -329,8 +382,10 @@ public class GameManagerVS : NetworkBehaviour
     [ClientRpc]
     private void CRpcFuntionOnClients()
     {
-     //   PlayerHasVoted();
-        
+        //   PlayerHasVoted();
+        PLManager.ResetVoted();
+        ProceedButton.SetActive(false);
+       // VotingScreen.SetActive(false);
         List<Transform> MostVotes = new List<Transform>();
         int highestVotes = 0;
 
@@ -361,10 +416,10 @@ public class GameManagerVS : NetworkBehaviour
 
             if (Pos == PLManager.PlayerId)
             {
-                PLManager.IsAlive = false;
+                PLManager.ThisPlayerDied();
                 PLManager.CmdChangeStatus();
                 Debug.Log(PLManager.gameObject);
-                KillPlayerScreen(PLManager.gameObject);
+                CheckIfKilledIsHost(PLManager.PlayerId);
             }
         }
 
@@ -388,36 +443,66 @@ public class GameManagerVS : NetworkBehaviour
         
     }
 
-    [Command(requiresAuthority =false)]
+    //[Command(requiresAuthority =false)]
     private void SetSpaceOn()
     {
         DisplayTime = SetSpaceTimer;
         TimerDPOn = true;
     }
 
-    [Command(requiresAuthority = false)]
+   // [Command(requiresAuthority = false)]
     private void SetSpaceOf()
     {
-        TimerDPOn = false;
+        Debug.Log("Waar is Jy in die lewe?");
+       // TimerDPOn = false;
         EjectPlayerScreen.SetActive(false);
         CmdCheckAmountofPlayersAlive();
     }
 
-    [Command(requiresAuthority = false)]
-    private void KillPlayerScreen(GameObject PLEjected)
-    {
-        EjectPlayerScreen.SetActive(true);
-        bool isTheImposter = PLEjected.GetComponent<PlayerType>().isImposter;
+    // [Command(requiresAuthority = false)]
 
+    public void CheckIfKilledIsHost(int value)
+    {
+
+        if (!NetworkServer.active)
+        {
+            CmdKilledHost(value);
+
+
+        }
+
+        else
+        {
+            KillPlayerScreen(value);
+        }
+    }
+
+    [Command(requiresAuthority = false)]
+    private void CmdKilledHost(int value)
+    {
+        KillPlayerScreen(value);
+    }
+
+    [ClientRpc]
+    private void KillPlayerScreen(int ID)
+    {
+        GameObject[] PLEjected = GameObject.FindGameObjectsWithTag("Player");
+        EjectPlayerScreen.SetActive(true);
+        bool isTheImposter = PLEjected[ID-1].GetComponent<PlayerType>().isImposter;
+
+        Debug.Log(ID);
+        Debug.Log("Was Imposter: " + PLEjected[ID-1].GetComponent<PlayerType>().gameObject.name);
         if (isTheImposter)
         {
-            EjectedMessage.text = PLEjected.GetComponent<PlayerLobbyManager>().playerName + " was the imposter";
+            Debug.Log("Mimic");
+            EjectedMessage.text = PLEjected[ID-1].GetComponent<PlayerLobbyManager>().playerName + " was the imposter";
             SetSpaceOn();
         }
 
         else
         {
-            EjectedMessage.text = PLEjected.GetComponent<PlayerLobbyManager>().playerName + " was not the imposter";
+            Debug.Log("Not mimic");
+            EjectedMessage.text = PLEjected[ID-1].GetComponent<PlayerLobbyManager>().playerName + " was not the imposter";
             SetSpaceOn();
         }
         
@@ -428,41 +513,65 @@ public class GameManagerVS : NetworkBehaviour
       //  ChangeStateOfGame();
     }
 
-    [Command(requiresAuthority = false)]
+   // [Command(requiresAuthority = false)]
     private void CmdCheckAmountofPlayersAlive()
     {
+        Debug.Log("Start Checking Players Alive");
         PlayerLeftAlive = 0;
         int AddPlayer = 0;
-        CheckImposterAlive();
+        CheckImposterDead();
+        Debug.Log(CheckImposterDead());
 
-        GameObject[] playerParent = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject PlayerThis in playerParent)
+       if (!CheckImposterDead())
         {
-          PlayerType playerType =  PlayerThis.gameObject.GetComponent<PlayerType>();
-            
-            if (playerType.isAlive == true)
+            Debug.Log("Check how many are Left");
+            GameObject[] playerParent = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject PlayerThis in playerParent)
             {
-                AddPlayer += 1;
+                PlayerType playerType = PlayerThis.gameObject.GetComponent<PlayerType>();
+
+                if (playerType.isAlive == true)
+                {
+                    AddPlayer += 1;
+                }
             }
-        }
 
-        PlayerLeftAlive = AddPlayer;
-       
+            Debug.Log(AddPlayer);
+            PlayerLeftAlive = AddPlayer;
 
-        if (PlayerLeftAlive <= 2)
-        {
-            ImposterWon();
+
+            if (PlayerLeftAlive <= 2)
+            {
+                Debug.Log("Ons was hier");
+                ImposterWon();
+                return;
+            }
+
+            else
+            {
+                Debug.Log("Ons was daar");
+               
+
+                if (isServer)
+                {
+                    ChangeStateOfGame();
+                }
+                
+                return;
+            }
         }
 
         else
         {
-            ChangeStateOfGame();
+            CrewWon();
+            return;
         }
+       
     }
 
     
-    [Command(requiresAuthority = false)]
-    private void CheckImposterAlive()
+   // [Command(requiresAuthority = false)]
+    private bool CheckImposterDead()
     {
         bool ImposterIsDead = true;
         GameObject[] playerParent = GameObject.FindGameObjectsWithTag("Player");
@@ -480,7 +589,12 @@ public class GameManagerVS : NetworkBehaviour
 
         if (ImposterIsDead)
         {
-            CrewWon();
+            return true;
+        }
+
+        else
+        {
+            return false;
         }
     }
 
@@ -491,7 +605,7 @@ public class GameManagerVS : NetworkBehaviour
 
     private void ImposterWon()
     {
-        ImposterWonScreen.SetActive(false);
+        ImposterWonScreen.SetActive(true);
     }
 
     void TimerChanged(float oldV, float newV)
