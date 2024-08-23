@@ -12,6 +12,8 @@ public class PlayerHUD : NetworkBehaviour
     public PlayerActions playerActions;
     public GameObject lobbyHUD;
     public GameObject viewLimiter;
+    public GameObject playerRolePanel;
+    public Text playerRoleText;
     public Button ventButton, useButton, reportButton, killButton, sabotageButton;
 
     
@@ -47,6 +49,23 @@ public class PlayerHUD : NetworkBehaviour
         killButton.interactable = false;
         reportButton.interactable = false;
         useButton.interactable = false;
+        ShowPlayerRole();
+    }
+
+    void ShowPlayerRole()
+    {
+        StartCoroutine(ShowRolePanel());
+    }
+    IEnumerator ShowRolePanel()
+    {
+        playerActions.canMove = false;
+        playerRolePanel.SetActive(true);
+        yield return new WaitForSeconds(3);
+        playerRoleText.text = "You are " + (playerType.isImposter ?  " the Imposter": "a Crewmate");
+        playerRoleText.color = playerType.isImposter ? Color.blue : Color.red;
+        yield return new WaitForSeconds(3);
+        playerRolePanel.SetActive(false);
+        playerActions.canMove = true;
     }
 
     public void KillButton()

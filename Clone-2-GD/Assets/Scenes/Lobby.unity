@@ -1981,6 +1981,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1924836300 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4270587356714257291, guid: 57c6dc3fedc0e624c81692ee6c82d31a, type: 3}
+  m_PrefabInstance: {fileID: 4270587356991102675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1924836306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924836300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc654f29862fc2643b948f772ebb9e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 1, g: 1, b: 1, a: 1}
+  padding: 2
+  width: 150
+  height: 25
 --- !u!1001 &1511912211876084256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2092,6 +2113,14 @@ PrefabInstance:
     - target: {fileID: 4270587356714257291, guid: 57c6dc3fedc0e624c81692ee6c82d31a, type: 3}
       propertyPath: m_Name
       value: NetworkManager Steam
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270587356714257291, guid: 57c6dc3fedc0e624c81692ee6c82d31a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270587358421984999, guid: 57c6dc3fedc0e624c81692ee6c82d31a, type: 3}
+      propertyPath: m_Text
+      value: Host game
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57c6dc3fedc0e624c81692ee6c82d31a, type: 3}

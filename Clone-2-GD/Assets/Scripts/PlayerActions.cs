@@ -8,6 +8,7 @@ public class PlayerActions : NetworkBehaviour
     public bool canVent = false;
     public bool inVent = false;
     public bool canKill = false;
+    public bool canMove = false;
     public GameObject currentVent = null;
     public GameObject killTarget;
     public KeyCode interactKey;
