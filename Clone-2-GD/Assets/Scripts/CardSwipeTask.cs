@@ -16,17 +16,19 @@ public class CardSwipeTask : MonoBehaviour
     public float maxSwipeTime = 1.5f; 
     public TaskSuccessText textAnimator; 
     private bool isSwiping = false;
-    private Vector2 originalPosition;
+    public GameObject originalPositionObject;
+    public Vector2 originalPosition;
     private float swipeStartTime;
 
     void Start()
     {
-        originalPosition = cardSprite.transform.position;
+        originalPosition = originalPositionObject.transform.position;
     }
 
     void Update()
     {
-            
+        originalPosition = originalPositionObject.transform.position;
+
         if (Input.GetMouseButtonDown(0))
         {
             // Sets Card location to mouse cursor, when left click is held

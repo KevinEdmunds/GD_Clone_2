@@ -23,7 +23,7 @@ public class MyNetworkBehaviour : NetworkManager
     void Update()
     {
         
-        if (Input.GetKeyUp(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             PlaceManagerOnServer();
         }
@@ -66,7 +66,7 @@ public class MyNetworkBehaviour : NetworkManager
     public override void OnServerDisconnect(NetworkConnectionToClient conn)
     {
         Debug.Log("Hierso");
-        managerVS.CMdRemovePlayer();
+        managerVS.RemovePlayer();
         base.OnServerDisconnect(conn);
        
     }

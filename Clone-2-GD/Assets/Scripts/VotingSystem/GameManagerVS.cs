@@ -10,14 +10,8 @@ public class GameManagerVS : NetworkBehaviour
     [SerializeField]
     [SyncVar(hook = nameof(PlayerCountChanged))]
     public int PlayerCount = 0;
-    [SerializeField]
-    [SyncVar]
-    public int PlayerLeftAlive = 0;
 
-    //[SerializeField]
-    //public Transform playerParent;
 
-    
     [SerializeField]
     [SyncVar(hook = nameof(GameStateChanged))]
     public GameState CurrentGameState;
@@ -30,12 +24,12 @@ public class GameManagerVS : NetworkBehaviour
     private MyNetworkBehaviour myNetwork;
 
     [SerializeField]
-    private TMP_Text PlayerNumbers, PlayerIDText, TimerText, EjectedMessage;
+    private TMP_Text PlayerNumbers, PlayerIDText, TimerText;
 
 
 
     [SerializeField]
-    private GameObject VotingScreen, PLPanelPrefab, EjectPlayerScreen, ProceedButton, ImposterWonScreen, CrewWonScreen;
+    private GameObject VotingScreen, PLPanelPrefab;
     [SerializeField]
     private Transform ContentParent;
 
@@ -43,11 +37,11 @@ public class GameManagerVS : NetworkBehaviour
 
     [SerializeField]
     [SyncVar(hook = nameof(TimerChanged))]
-    private float TimeLeft, DisplayTime;
+    private float TimeLeft;
     [SerializeField]
-    private float SetTime, minutes, seconds, SetSpaceTimer;
+    private float SetTime, minutes, seconds;
     [SyncVar]
-    private bool TimerOn = false, TimerDPOn = false;
+    private bool TimerOn = false;
     public enum GameState
     {
         Normal,
@@ -59,8 +53,7 @@ public class GameManagerVS : NetworkBehaviour
     {
         // NetworkServer.Spawn(gameObject);
         CurrentGameState = GameState.Normal;
-        
-       // Debug.Log("Server is: " + isServer);
+        Debug.Log("Server is: " + isServer);
 
         //  VotingScreen.SetActive(false);
     }
@@ -69,28 +62,16 @@ public class GameManagerVS : NetworkBehaviour
     void Update()
     {
         TimerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
-       // PlayerNumbers.text = PlayerCount.ToString();
+        PlayerNumbers.text = PlayerCount.ToString();
 
-        //if (PlayerSpawned == true)
-        //{
-        //    PlayerIDText.text = PLManager.PlayerId.ToString();
-        //}
+        if (PlayerSpawned == true)
+        {
+            PlayerIDText.text = PLManager.PlayerId.ToString();
+        }
 
         if (TimerOn == true)
         {
             Countdown();
-        }
-
-
-        if (DisplayTime > 0 &&
-            TimerDPOn == true)
-        {
-            DisplayTime -= Time.deltaTime;
-
-            if (DisplayTime < 0)
-            {
-                SetSpaceOf();
-            }
         }
 
     }
@@ -122,14 +103,14 @@ public class GameManagerVS : NetworkBehaviour
     }
 
     [Command(requiresAuthority = false)]
-    public void CMdAddPlayerCount()
+    public void AddPlayerCount()
     {
         PlayerCount += 1;
 
     }
 
     [Command(requiresAuthority = false)]
-    public void CMdRemovePlayer()
+    public void RemovePlayer()
     {
         PlayerCount -= 1;
 
@@ -169,11 +150,10 @@ public class GameManagerVS : NetworkBehaviour
     }
 
     [Command(requiresAuthority = false)]
-    private void CmdSetGameToVoting()
+    private void SetGameToVoting()
     {
         CurrentGameState = GameManagerVS.GameState.Voting;
         VotingScreen.SetActive(true);
-        ProceedButton.SetActive(false);
 
         for (int i = 0; i < PlayerCount; i++)
         {
@@ -187,10 +167,9 @@ public class GameManagerVS : NetworkBehaviour
     }
 
     [Command(requiresAuthority = false)]
-    private void CmdSetGameToNormal()
+    private void SetGameToNormal()
     {
         //VotingScreen.SetActive(false);
-        ProceedButton.SetActive(false);
         CurrentGameState = GameManagerVS.GameState.Normal;
 
         foreach (Transform child in ContentParent)
@@ -207,129 +186,116 @@ public class GameManagerVS : NetworkBehaviour
     //[Command(requiresAuthority = false)]
     public void ChangeStateOfGame()
     {
-       // Debug.Log("Eenkeer");
+
         if (CurrentGameState == GameManagerVS.GameState.Normal)
         {
-           // Debug.Log("Normal");
+
             CurrentGameState = GameManagerVS.GameState.Voting;
             VotingScreen.SetActive(true);
-            ProceedButton.SetActive(false);
-            PLManager.CmdCheckStatus();
-            CmdSetGameToVoting();
+            SetGameToVoting();
 
         }
 
         else
         {
-            // Debug.Log("Voting");
-            ProceedButton.SetActive(false);
+
             CurrentGameState = GameManagerVS.GameState.Normal;
             TimerOn = false;
             VotingScreen.SetActive(false);
-            CmdSetGameToNormal();
+            SetGameToNormal();
         }
     }
 
-    //[Command(requiresAuthority = false)]
+
     public void PlayerHasVoted()
     {
-       PLManager.ThisPlayerVoted();
+        PLManager.HAsVoted = true;
+
     }
 
-    public int GetPlayerCount()
-    {
-        return PlayerCount;
-    }
 
     public void skipVote()
     {
         PlayerHasVoted();
-       
 
         foreach (Transform transform in ContentParent)
         {
             transform.gameObject.GetComponent<PlayerPanelScript>().button.SetActive(false);
-
-            if (transform.gameObject.GetComponent<PlayerPanelScript>().PanelId == PLManager.PlayerId)
-            {
-                transform.gameObject.GetComponent<PlayerPanelScript>().CMdThisPlayerVoted();
-
-            }
-        }
-
-        CheckIfEveryOneVoted();
-    }
-
-    private void CheckIfEveryOneVoted()
-    {
-        bool everyOneVoted = true;
-        GameObject[] playerParent = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach (GameObject transform in playerParent)
-        {
-            PlayerManager playerManager = transform.gameObject.GetComponent<PlayerManager>();
-
-            if (!playerManager.HAsVoted)
-            {
-                everyOneVoted = false;
-            }
-        }
-
-        if (everyOneVoted)
-        {
-            VoteDone();
         }
     }
 
    
     public void VoteDone()
     {
-        ShowVotes();
-        ProceedButton.SetActive(true);
-            
-    }
 
-    private void ShowVotes()
-    {
-        //foreach (Transform transform in ContentParent)
-        //{
-        //    int Totalvotes = transform.gameObject.GetComponent<PlayerPanelScript>().AmountOfvotes;
-        //    Transform Parent = transform.gameObject.GetComponent<PlayerPanelScript>().HowManyVotes.transform;
+        //    PlayerHasVoted();
+        //    Debug.Log("KnoppieGedruk");
+        //    List<Transform> MostVotes = new List<Transform>();
+        //    int highestVotes = 0;
 
-        //    for (int i = 0; i < Totalvotes; i++)
+        //    foreach (Transform playerVotes in ContentParent)
         //    {
-        //        Parent.GetChild(i).gameObject.SetActive(true);
-        //    }
-        //}
-    }
+        //        int Total = playerVotes.gameObject.GetComponent<PlayerPanelScript>().AmountOfvotes;
 
-    public void PressProceedDone()
-    {
+        //        if (Total == highestVotes &&
+        //            Total > 0)
+        //        {
+        //            MostVotes.Add(playerVotes);
+        //            highestVotes = Total;
+        //        }
+
+        //        else if (Total > highestVotes)
+        //        {
+        //            MostVotes.Clear();
+        //            MostVotes.Add(playerVotes);
+        //            highestVotes = Total;
+        //        }
+        //    }
+
+        //    Debug.Log(MostVotes.Count + " checking count");
+        //    if (MostVotes.Count == 1)
+        //    {
+        //        int Pos = MostVotes[0].gameObject.GetComponent<PlayerPanelScript>().PanelId;
+
+        //        if (Pos == PLManager.PlayerId)
+        //        {
+        //            PLManager.IsAlive = false;
+        //            Debug.Log(PLManager.gameObject);
+        //        }
+        //    }
+
+        //    else
+        //    {
+        //        Debug.Log("Nobody dies");
+        //    }
+
+        //    ChangeStateOfGame();
+        //}
 
         if (!NetworkServer.active)
         {
-            CmdFunctionFromHost();
+            FunctionFromHost();
          
 
         }
 
         else
         {
-            CRpcFuntionOnClients();
+            FuntionOnClients();
         }
     }
 
     [Command(requiresAuthority = false)]
-    public void CmdFunctionFromHost()
+    public void FunctionFromHost()
     {
-        CRpcFuntionOnClients();
+        FuntionOnClients();
         
     }
 
     [ClientRpc]
-    private void CRpcFuntionOnClients()
+    private void FuntionOnClients()
     {
-     //   PlayerHasVoted();
+        PlayerHasVoted();
         
         List<Transform> MostVotes = new List<Transform>();
         int highestVotes = 0;
@@ -362,136 +328,16 @@ public class GameManagerVS : NetworkBehaviour
             if (Pos == PLManager.PlayerId)
             {
                 PLManager.IsAlive = false;
-                PLManager.CmdChangeStatus();
                 Debug.Log(PLManager.gameObject);
-                KillPlayerScreen(PLManager.gameObject);
             }
         }
 
         else
         {
-            NobodyWasKilledScreen();
-        }
-
-       // CmdCheckAmountofPlayersAlive();
-        
-       //  KillPlayerScreen();
-
-       // ChangeStateOfGame();
-    }
-
-    private void NobodyWasKilledScreen()
-    {
-        EjectPlayerScreen.SetActive(true);
-        EjectedMessage.text = "Nobody was Ejected";
-        SetSpaceOn();
-        
-    }
-
-    [Command(requiresAuthority =false)]
-    private void SetSpaceOn()
-    {
-        DisplayTime = SetSpaceTimer;
-        TimerDPOn = true;
-    }
-
-    [Command(requiresAuthority = false)]
-    private void SetSpaceOf()
-    {
-        TimerDPOn = false;
-        EjectPlayerScreen.SetActive(false);
-        CmdCheckAmountofPlayersAlive();
-    }
-
-    [Command(requiresAuthority = false)]
-    private void KillPlayerScreen(GameObject PLEjected)
-    {
-        EjectPlayerScreen.SetActive(true);
-        bool isTheImposter = PLEjected.GetComponent<PlayerType>().isImposter;
-
-        if (isTheImposter)
-        {
-            EjectedMessage.text = PLEjected.GetComponent<PlayerLobbyManager>().playerName + " was the imposter";
-            SetSpaceOn();
-        }
-
-        else
-        {
-            EjectedMessage.text = PLEjected.GetComponent<PlayerLobbyManager>().playerName + " was not the imposter";
-            SetSpaceOn();
-        }
-        
-        
-        
-
-        //EjectedMessage.text = PLEjected.GetComponent<PlayerManager>().;
-      //  ChangeStateOfGame();
-    }
-
-    [Command(requiresAuthority = false)]
-    private void CmdCheckAmountofPlayersAlive()
-    {
-        PlayerLeftAlive = 0;
-        int AddPlayer = 0;
-        CheckImposterAlive();
-
-        GameObject[] playerParent = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject PlayerThis in playerParent)
-        {
-          PlayerType playerType =  PlayerThis.gameObject.GetComponent<PlayerType>();
             
-            if (playerType.isAlive == true)
-            {
-                AddPlayer += 1;
-            }
         }
 
-        PlayerLeftAlive = AddPlayer;
-       
-
-        if (PlayerLeftAlive <= 2)
-        {
-            ImposterWon();
-        }
-
-        else
-        {
-            ChangeStateOfGame();
-        }
-    }
-
-    
-    [Command(requiresAuthority = false)]
-    private void CheckImposterAlive()
-    {
-        bool ImposterIsDead = true;
-        GameObject[] playerParent = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject PlayerThis in playerParent)
-        {
-            PlayerType playerType = PlayerThis.gameObject.GetComponent<PlayerType>();
-
-            if (playerType.isAlive == true &&
-                playerType.isImposter == true)
-            {
-                ImposterIsDead = false;
-            }
-
-        }
-
-        if (ImposterIsDead)
-        {
-            CrewWon();
-        }
-    }
-
-    private void CrewWon()
-    {
-        CrewWonScreen.SetActive(true);
-    }
-
-    private void ImposterWon()
-    {
-        ImposterWonScreen.SetActive(false);
+        ChangeStateOfGame();
     }
 
     void TimerChanged(float oldV, float newV)
