@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 1515527506678242955}
   - component: {fileID: -3136668454650276990}
   - component: {fileID: 7185549405942326281}
+  - component: {fileID: 8443323110967403322}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -604,6 +605,27 @@ MonoBehaviour:
   hostButton: {fileID: 6710506753701978431}
   submitName: {fileID: 7007048938539871002}
   nameInput: {fileID: 7948604168847260573}
+--- !u!114 &8443323110967403322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2710432407965512610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeff22f6bcbdd7e4d956ffee03c62f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  managerVS: {fileID: 0}
+  PlayerId: 0
+  HAsVoted: 0
+  buffer: 1
+  IsAlive: 1
+  playerType: {fileID: 1515527506678242955}
 --- !u!1 &2804001198995738277
 GameObject:
   m_ObjectHideFlags: 0
