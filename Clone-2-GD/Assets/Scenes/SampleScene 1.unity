@@ -2992,6 +2992,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1424116799966815062, guid: ae09f93179cf16146b104b7922416da4, type: 3}
+      propertyPath: isImposterList.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424116799966815062, guid: ae09f93179cf16146b104b7922416da4, type: 3}
+      propertyPath: isImposterList.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1424116799966815063, guid: ae09f93179cf16146b104b7922416da4, type: 3}
       propertyPath: sceneId
       value: 500109607
@@ -10541,7 +10549,7 @@ MonoBehaviour:
   slider3: {fileID: 776147706}
   taskPanel: {fileID: 367400315}
   rotationSpeed: 100
-  alignmentRange: 40
+  alignmentRange: 60
   taskManager: {fileID: 555556288}
 --- !u!1 &556795761
 GameObject:
@@ -27355,6 +27363,10 @@ PrefabInstance:
     - target: {fileID: 7013102886511010639, guid: 9da96779eeefd364d83db5da1e0e956c, type: 3}
       propertyPath: m_Name
       value: VotingScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013102886511010639, guid: 9da96779eeefd364d83db5da1e0e956c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7013102887310399193, guid: 9da96779eeefd364d83db5da1e0e956c, type: 3}
       propertyPath: m_AnchorMax.x
