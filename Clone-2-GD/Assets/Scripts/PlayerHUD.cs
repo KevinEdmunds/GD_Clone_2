@@ -130,13 +130,16 @@ public class PlayerHUD : NetworkBehaviour
                     sabotageOxygen2Trigger = sabotageOxygen2trigger.GetComponent<Collider2D>();
                 }
 
-                if (sabotageMapPanel != null)
+                if(playerType.isImposter)
                 {
-                    sabotageMapPanel = GameObject.Find("SabotageMapPanel");
-                }
-                else
-                {
-                    Debug.LogError("Sabotage Map Panel!");
+                    if (sabotageMapPanel != null)
+                    {
+                        sabotageMapPanel = GameObject.Find("SabotageMapPanel");
+                    }
+                    else
+                    {
+                        Debug.LogError("Sabotage Map Panel!");
+                    }
                 }
 
                 emptyGarbageCafePanel = GameObject.Find("EmptyGarbageCafePanel");

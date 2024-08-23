@@ -664,7 +664,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  moveSpeed: 5
+  moveSpeed: 3
   fovThing: {fileID: 6251936611706336502, guid: 709ad422b0db404479f49f52ca9bb5c8, type: 3}
   playerType: {fileID: 0}
   numOfPlayers: 0
