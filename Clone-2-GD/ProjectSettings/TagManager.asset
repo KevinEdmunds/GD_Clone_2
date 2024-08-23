@@ -11,6 +11,8 @@ TagManager:
   - Content
   - GameManager
   - SabotageMap
+  - Undefined
+  - NetworkMan
   layers:
   - Default
   - TransparentFX

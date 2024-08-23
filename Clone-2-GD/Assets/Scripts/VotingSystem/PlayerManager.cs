@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using System;
+using UnityEngine.SceneManagement;
+
 
 
 
@@ -21,10 +23,16 @@ public class PlayerManager : NetworkBehaviour
     [SerializeField]
     private PlayerType playerType;
     public bool buffer = true;
+    
+
+    Scene scene;
     // Start is called before the first frame update
     void Start()
     {
-        if (isLocalPlayer)
+        scene = SceneManager.GetActiveScene();
+        
+        if (isLocalPlayer &&
+           scene.buildIndex == 2)
         {
             IsAlive = playerType.isAlive;
             managerVS = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerVS>();
@@ -67,20 +75,26 @@ public class PlayerManager : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isLocalPlayer && Input.GetKeyDown(KeyCode.T))
+        
+       if (scene.buildIndex == 2)
         {
-           
-            TestChanges();
-        }
+            if (isLocalPlayer && Input.GetKeyDown(KeyCode.T))
+            {
 
-        if (isLocalPlayer && 
-            managerVS.CurrentGameState == GameManagerVS.GameState.Normal)
-        {
-            HasVoted = false;
+                TestChanges();
+            }
+
+            if (isLocalPlayer &&
+                managerVS.CurrentGameState == GameManagerVS.GameState.Normal)
+            {
+                HasVoted = false;
+            }
         }
+        
+        
     }
 
-    private void TestChanges()
+    public void TestChanges()
     {
         managerVS.ChangeStateOfGame();
     }
