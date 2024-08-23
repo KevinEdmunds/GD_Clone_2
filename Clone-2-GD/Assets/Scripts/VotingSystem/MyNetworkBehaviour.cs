@@ -16,17 +16,17 @@ public class MyNetworkBehaviour : NetworkManager
     // Start is called before the first frame update
     void Start()
     {
-     VotingScreen.SetActive(false);
+    // VotingScreen.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (Input.GetKeyUp(KeyCode.P))
-        {
-            PlaceManagerOnServer();
-        }
+        //if (Input.GetKeyUp(KeyCode.P))
+        //{
+        //    PlaceManagerOnServer();
+        //}
     }
 
     private void PlaceManagerOnServer()
@@ -65,9 +65,9 @@ public class MyNetworkBehaviour : NetworkManager
     }
     public override void OnServerDisconnect(NetworkConnectionToClient conn)
     {
-        Debug.Log("Hierso");
-        managerVS.CMdRemovePlayer();
-        base.OnServerDisconnect(conn);
+        //Debug.Log("Hierso");
+        //managerVS.CMdRemovePlayer();
+        //base.OnServerDisconnect(conn);
        
     }
 

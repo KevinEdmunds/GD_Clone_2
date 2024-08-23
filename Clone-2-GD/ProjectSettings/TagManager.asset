@@ -8,6 +8,10 @@ TagManager:
   - Leaf
   - PlayerHitbox
   - ViewRenderer
+  - Content
+  - GameManager
+  - Undefined
+  - NetworkMan
   layers:
   - Default
   - TransparentFX

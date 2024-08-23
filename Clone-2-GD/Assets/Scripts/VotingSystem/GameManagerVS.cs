@@ -58,6 +58,7 @@ public class GameManagerVS : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myNetwork = GameObject.FindGameObjectWithTag("NetworkMan").GetComponent<MyNetworkBehaviour>();
         // NetworkServer.Spawn(gameObject);
         CurrentGameState = GameState.Normal;
 
