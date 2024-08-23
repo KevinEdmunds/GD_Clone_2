@@ -11,22 +11,24 @@ public class CardSwipeTask : MonoBehaviour
     public TaskManager taskManager;
     public SpriteRenderer cardSprite;
     public float swipeSpeed = 1.0f;
-    public float sliderSpeedFactor = 0.5f; 
-    public float minSwipeTime = 0.5f; 
-    public float maxSwipeTime = 1.5f; 
-    public TaskSuccessText textAnimator; 
+    public float sliderSpeedFactor = 0.5f;
+    public float minSwipeTime = 0.5f;
+    public float maxSwipeTime = 1.5f;
+    public TaskSuccessText textAnimator;
     private bool isSwiping = false;
-    private Vector2 originalPosition;
+    public GameObject originalPositionObject;
+    public Vector2 originalPosition;
     private float swipeStartTime;
 
     void Start()
     {
-        originalPosition = cardSprite.transform.position;
+        originalPosition = originalPositionObject.transform.position;
     }
 
     void Update()
     {
-            
+        originalPosition = originalPositionObject.transform.position;
+
         if (Input.GetMouseButtonDown(0))
         {
             // Sets Card location to mouse cursor, when left click is held
@@ -73,8 +75,8 @@ public class CardSwipeTask : MonoBehaviour
     {
         Debug.Log("Swipe Complete!");
         taskPanel.gameObject.SetActive(false);
-        textAnimator.gameObject.SetActive(true); 
-        textAnimator.SetText("Task Completed!"); 
+        textAnimator.gameObject.SetActive(true);
+        textAnimator.SetText("Task Completed!");
         textAnimator.AnimateText();
 
         taskManager.numOfTasksCompleted++;
