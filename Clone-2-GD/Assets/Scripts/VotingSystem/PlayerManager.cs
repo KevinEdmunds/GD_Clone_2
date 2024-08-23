@@ -15,7 +15,7 @@ public class PlayerManager : NetworkBehaviour
     [SyncVar(hook = nameof(UpdatePlayerID))]
     public int PlayerId;
     [SyncVar(hook = nameof(HasVotedChanged))]
-    public bool HAsVoted = false;
+    public bool HasVoted = false;
     [SyncVar(hook = nameof(HasBeenKilled))]
     public bool IsAlive = true;
     [SerializeField]
@@ -76,7 +76,7 @@ public class PlayerManager : NetworkBehaviour
         if (isLocalPlayer && 
             managerVS.CurrentGameState == GameManagerVS.GameState.Normal)
         {
-            HAsVoted = false;
+            HasVoted = false;
         }
     }
 
@@ -113,8 +113,21 @@ public class PlayerManager : NetworkBehaviour
     [Command(requiresAuthority =false)]
     public void ThisPlayerVoted()
     {
-        HAsVoted = true;
+        HasVoted = true;
         Debug.Log("HetGestem");
+    }
+
+    [Command(requiresAuthority = false)]
+    public void ResetVoted()
+    {
+        HasVoted = false;
+        Debug.Log("ResetedVote");
+    }
+
+    [Command(requiresAuthority = false)]
+    public void ThisPlayerDied()
+    {
+        IsAlive = false;
     }
 
     [Command(requiresAuthority = false)]

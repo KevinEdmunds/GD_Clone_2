@@ -169,7 +169,7 @@ public class PlayerPanelScript : NetworkBehaviour, IPointerClickHandler
     public void VoteForPlayer(PlayerPanelScript playerTar)
     {
         
-        if (managerVS.PLManager.HAsVoted == false &&
+        if (managerVS.PLManager.HasVoted == false &&
             playerTar.CorrespondingPlayerAlive == true)
         {
             //Debug.Log("Voted");
