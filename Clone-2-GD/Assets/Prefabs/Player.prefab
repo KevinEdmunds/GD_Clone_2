@@ -531,6 +531,7 @@ GameObject:
   - component: {fileID: 1515527506678242955}
   - component: {fileID: -3136668454650276990}
   - component: {fileID: 7185549405942326281}
+  - component: {fileID: 4887551565237370001}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -647,7 +648,7 @@ MonoBehaviour:
   interactKey: 101
   playerType: {fileID: 1515527506678242955}
   thisPlayerHitbox: {fileID: 0}
-  playerHUD: {fileID: -3136668454650276990}
+  playerHUD: {fileID: 0}
 --- !u!114 &2710432407965512609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -757,7 +758,7 @@ MonoBehaviour:
   isImposter: 0
   isAlive: 1
   playerActions: {fileID: 2710432407965512608}
-  playerHUD: {fileID: -3136668454650276990}
+  playerHUD: {fileID: 0}
   playerLobby: {fileID: 7185549405942326281}
 --- !u!114 &-3136668454650276990
 MonoBehaviour:
@@ -774,15 +775,8 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  imposterHUD: {fileID: 2804001198995738277}
-  playerHUD: {fileID: 8085152693508358616}
   playerType: {fileID: 1515527506678242955}
-  playerActions: {fileID: 2710432407965512608}
-  ventButton: {fileID: 3058702231653085789}
   useButton: {fileID: 2303093752597115440}
-  reportButton: {fileID: 3144917333495226445}
-  killButton: {fileID: 7215145893239649317}
-  sabotageButton: {fileID: 35089845786251825}
 --- !u!114 &7185549405942326281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,6 +809,27 @@ MonoBehaviour:
   buttonList: []
   colorButton: {fileID: 7396897213494773841, guid: 7aa81fde179e7cd41a6816dd16baadc6, type: 3}
   colorPalette: {fileID: 7472600373370650801}
+--- !u!114 &4887551565237370001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2710432407965512610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeff22f6bcbdd7e4d956ffee03c62f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  managerVS: {fileID: 0}
+  PlayerId: 0
+  HasVoted: 0
+  IsAlive: 1
+  playerType: {fileID: 1515527506678242955}
+  buffer: 1
 --- !u!1 &2804001198995738277
 GameObject:
   m_ObjectHideFlags: 0
