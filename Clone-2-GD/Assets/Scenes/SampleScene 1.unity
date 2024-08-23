@@ -10410,6 +10410,8 @@ GameObject:
   - component: {fileID: 555556290}
   - component: {fileID: 555556291}
   - component: {fileID: 555556295}
+  - component: {fileID: 555556293}
+  - component: {fileID: 555556292}
   m_Layer: 0
   m_Name: TaskManager
   m_TagString: Untagged
@@ -10531,6 +10533,40 @@ MonoBehaviour:
   reactorGlow1: {fileID: 1889231418}
   reactorGlow2: {fileID: 1185489920}
   isReactorSabotaged: 0
+--- !u!114 &555556292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555556285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0903122e524195e4b9bcbb6ffb87697e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uploadButton: {fileID: 81321548}
+  uploadSlider: {fileID: 1180632324}
+  uploadPanel: {fileID: 1939683715}
+  percentageText: {fileID: 1797974088}
+  taskManager: {fileID: 555556288}
+--- !u!114 &555556293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555556285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 114df894a99728b49990ef321b559646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downloadButton: {fileID: 621453659}
+  downloadSlider: {fileID: 810076015}
+  downloadPanel: {fileID: 1689508938}
+  percentageText: {fileID: 1416934484}
+  taskManager: {fileID: 555556288}
 --- !u!114 &555556295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27368,15 +27404,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7013102886511010639, guid: 9da96779eeefd364d83db5da1e0e956c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7013102887310399193, guid: 9da96779eeefd364d83db5da1e0e956c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7013102887310399193, guid: 9da96779eeefd364d83db5da1e0e956c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9da96779eeefd364d83db5da1e0e956c, type: 3}
