@@ -921,7 +921,7 @@ SpriteRenderer:
   m_Size: {x: 0.94, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &58305641
@@ -2108,7 +2108,7 @@ SpriteRenderer:
   m_Size: {x: 0.94, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &115108795
@@ -8002,8 +8002,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e404127ff718da41952eaeceec5b5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  downloadTaskPanel: {fileID: 1689508938}
-  downloadTask: {fileID: 555556293}
 --- !u!1 &457164563
 GameObject:
   m_ObjectHideFlags: 0
@@ -10102,11 +10100,7 @@ GameObject:
   - component: {fileID: 555556289}
   - component: {fileID: 555556290}
   - component: {fileID: 555556291}
-  - component: {fileID: 555556292}
-  - component: {fileID: 555556293}
-  - component: {fileID: 555556294}
   - component: {fileID: 555556295}
-  - component: {fileID: 555556296}
   m_Layer: 0
   m_Name: TaskManager
   m_TagString: Untagged
@@ -10136,8 +10130,6 @@ MonoBehaviour:
   minSwipeTime: 0.5
   maxSwipeTime: 1.5
   textAnimator: {fileID: 208896945}
-  originalPositionObject: {fileID: 1139342755}
-  originalPosition: {x: 0, y: 0}
 --- !u!4 &555556287
 Transform:
   m_ObjectHideFlags: 0
@@ -10183,8 +10175,6 @@ MonoBehaviour:
   emptyGarbagePanel: {fileID: 1617379834}
   taskManager: {fileID: 555556288}
   leavesAnimator: {fileID: 416758981}
-  hasCafeBeenCompleted: 0
-  hasStorageBeenCompleted: 0
   chuteCollider: {fileID: 1739683664}
   leverMoveSpeed: 2
   requiredHoldTime: 3
@@ -10230,68 +10220,6 @@ MonoBehaviour:
   reactorGlow1: {fileID: 1889231418}
   reactorGlow2: {fileID: 1185489920}
   isReactorSabotaged: 0
---- !u!114 &555556292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555556285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c08563d5a416fa479334019d2864d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftPositions:
-  - {fileID: 126927875}
-  - {fileID: 109161202}
-  - {fileID: 183611094}
-  - {fileID: 1144157722}
-  rightPositions:
-  - {fileID: 608320037}
-  - {fileID: 1351284116}
-  - {fileID: 1093369188}
-  - {fileID: 890946867}
-  wirePrefabs:
-  - {fileID: 6031905899295941421, guid: bc681ccfe3bed534183b6ab2a9dd61e6, type: 3}
-  - {fileID: 2793501126130260423, guid: b9752528c72666c439bdc55ce50554d8, type: 3}
-  - {fileID: 4480439789930774985, guid: e578728340b690b4b9ee8f981cfa47a9, type: 3}
-  - {fileID: 2788236859536115311, guid: a9ef50d00fa7ce141acb8f0e0791e268, type: 3}
-  panel: {fileID: 2047013607}
---- !u!114 &555556293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555556285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 114df894a99728b49990ef321b559646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  downloadButton: {fileID: 621453659}
-  downloadSlider: {fileID: 810076015}
-  downloadPanel: {fileID: 1689508938}
-  percentageText: {fileID: 1416934484}
-  taskManager: {fileID: 555556288}
---- !u!114 &555556294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555556285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0903122e524195e4b9bcbb6ffb87697e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uploadButton: {fileID: 81321548}
-  uploadSlider: {fileID: 1180632324}
-  uploadPanel: {fileID: 1939683715}
-  percentageText: {fileID: 1797974088}
-  taskManager: {fileID: 555556288}
 --- !u!114 &555556295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10314,20 +10242,6 @@ MonoBehaviour:
   rotationSpeed: 100
   alignmentRange: 40
   taskManager: {fileID: 555556288}
---- !u!114 &555556296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555556285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef49a5c55450744408ae208ea81008bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 2710432407965512621, guid: a9b5c070e792c504da6ac4928bb5e58f, type: 3}
-  task: {fileID: 0}
 --- !u!1 &556795761
 GameObject:
   m_ObjectHideFlags: 0
@@ -24471,7 +24385,7 @@ SpriteRenderer:
   m_Size: {x: 5.02, y: 3.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1499456533
@@ -25666,7 +25580,7 @@ SpriteRenderer:
   m_Size: {x: 5.02, y: 3.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1578034753
@@ -28294,8 +28208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750eda9e945e7b343914bc21f8f8923a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uploadTaskPanel: {fileID: 1939683715}
-  uploadTask: {fileID: 555556294}
 --- !u!114 &1714146376
 MonoBehaviour:
   m_ObjectHideFlags: 0
