@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4946561219838281805}
   m_Layer: 0
   m_Name: ViewRenderer
-  m_TagString: ViewRenderer
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
     m_Bits: 64
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 128
   visibleTargets: []
   meshResolution: 1
   edgeResolveIterations: 3

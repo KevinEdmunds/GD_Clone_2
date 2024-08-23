@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-using UnityEngine.UI;
 
 public class PlayerFieldOfView : MonoBehaviour
 {
@@ -59,7 +58,6 @@ public class PlayerFieldOfView : MonoBehaviour
             if (player!=this.transform.parent.gameObject)
             {
                 player.GetComponent<SpriteRenderer>().enabled = false;
-                player.GetComponentInChildren<Text>().enabled = false;
             }
         }
     }
@@ -83,7 +81,6 @@ public class PlayerFieldOfView : MonoBehaviour
                     {
                         visibleTargets.Add(target);
                         target.GetComponent<SpriteRenderer>().enabled = true;
-                        target.GetComponentInChildren<Text>().enabled = true;
                         targetAquired = true;
                     }
                 }
