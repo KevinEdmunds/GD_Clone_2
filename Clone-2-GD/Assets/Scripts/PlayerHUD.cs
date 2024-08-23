@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Mirror;
 using UnityEngine.UI;
 
@@ -50,190 +51,193 @@ public class PlayerHUD : NetworkBehaviour
 
         if (isLocalPlayer)
         {
-            playerCollider = GetComponent<Collider2D>();
-
-            GameObject emptyGarbageCafetrigger = GameObject.Find("EmptyGarbageCafeTrigger");
-            GameObject cardSwipeAdmintrigger = GameObject.Find("CardSwipeAdminTrigger");
-            GameObject downloadWeaponstrigger = GameObject.Find("DownloadWeaponsTrigger");
-            GameObject uploadAdmintrigger = GameObject.Find("UploadAdminTrigger");
-            GameObject calibrateDistrigger = GameObject.Find("CalibrateDisTrigger");
-            GameObject sabotageReactor1trigger = GameObject.Find("SabotageReactor1Trigger");
-            GameObject sabotageReactor2trigger = GameObject.Find("SabotageReactor2Trigger");
-            GameObject sabotageOxygen1trigger = GameObject.Find("SabotageOxygen1Trigger");
-            GameObject sabotageOxygen2trigger = GameObject.Find("SabotageOxygen2Trigger");
-          //  GameObject sabotageMapPanel = GameObject.Find("Canvas/SabotageMapPanel");
-            sabotageReactor = GameObject.Find("TaskManager").GetComponent<SabotageReactor>();
-            sabotageOxygen = GameObject.Find("TaskManager").GetComponent<SabotageOxygen>();
-           
-
-
-
-          
-
-            if (emptyGarbageCafetrigger != null)
+            if (SceneManager.GetActiveScene().name!="Lobby")
             {
-                emptyGarbageCafeTrigger = emptyGarbageCafetrigger.GetComponent<Collider2D>();
-            }
-            else
-            {
-                Debug.LogError("EmptyGarbageCafeTrigger not found!");
-            }
+                playerCollider = GetComponent<Collider2D>();
 
-            if (cardSwipeAdmintrigger != null)
-            {
-                cardSwipeAdminTrigger = cardSwipeAdmintrigger.GetComponent<Collider2D>();
-            }
-            else
-            {
-                Debug.LogError("CardSwipeAdminTrigger not found!");
-            }
+                GameObject emptyGarbageCafetrigger = GameObject.Find("EmptyGarbageCafeTrigger");
+                GameObject cardSwipeAdmintrigger = GameObject.Find("CardSwipeAdminTrigger");
+                GameObject downloadWeaponstrigger = GameObject.Find("DownloadWeaponsTrigger");
+                GameObject uploadAdmintrigger = GameObject.Find("UploadAdminTrigger");
+                GameObject calibrateDistrigger = GameObject.Find("CalibrateDisTrigger");
+                GameObject sabotageReactor1trigger = GameObject.Find("SabotageReactor1Trigger");
+                GameObject sabotageReactor2trigger = GameObject.Find("SabotageReactor2Trigger");
+                GameObject sabotageOxygen1trigger = GameObject.Find("SabotageOxygen1Trigger");
+                GameObject sabotageOxygen2trigger = GameObject.Find("SabotageOxygen2Trigger");
+                //  GameObject sabotageMapPanel = GameObject.Find("Canvas/SabotageMapPanel");
+                sabotageReactor = GameObject.Find("TaskManager").GetComponent<SabotageReactor>();
+                sabotageOxygen = GameObject.Find("TaskManager").GetComponent<SabotageOxygen>();
 
-            if (downloadWeaponstrigger != null)
-            {
-                downloadWeaponsTrigger = downloadWeaponstrigger.GetComponent<Collider2D>();
-            }
-            else
-            {
-                Debug.LogError("DownloadWeaponsTrigger not found!");
-            }
 
-            if (uploadAdmintrigger != null)
-            {
-                uploadAdminTrigger = uploadAdmintrigger.GetComponent<Collider2D>();
-            }
 
-            if (calibrateDistrigger != null)
-            {
-                calibrateDisTrigger = calibrateDistrigger.GetComponent<Collider2D>();
-            }
 
-            if (sabotageReactor1trigger != null)
-            {
-                sabotageReactor1Trigger = sabotageReactor1trigger.GetComponent<Collider2D>();
-            }
 
-            if (sabotageReactor2trigger != null)
-            {
-                sabotageReactor2Trigger = sabotageReactor2trigger.GetComponent<Collider2D>();
-            }
 
-            if (sabotageOxygen1trigger != null)
-            {
-                sabotageOxygen1Trigger = sabotageOxygen1trigger.GetComponent<Collider2D>();
-            }
+                if (emptyGarbageCafetrigger != null)
+                {
+                    emptyGarbageCafeTrigger = emptyGarbageCafetrigger.GetComponent<Collider2D>();
+                }
+                else
+                {
+                    Debug.LogError("EmptyGarbageCafeTrigger not found!");
+                }
 
-            if (sabotageOxygen2trigger != null)
-            {
-                sabotageOxygen2Trigger = sabotageOxygen2trigger.GetComponent<Collider2D>();
-            }
+                if (cardSwipeAdmintrigger != null)
+                {
+                    cardSwipeAdminTrigger = cardSwipeAdmintrigger.GetComponent<Collider2D>();
+                }
+                else
+                {
+                    Debug.LogError("CardSwipeAdminTrigger not found!");
+                }
 
-            if (sabotageMapPanel != null)
-            {
+                if (downloadWeaponstrigger != null)
+                {
+                    downloadWeaponsTrigger = downloadWeaponstrigger.GetComponent<Collider2D>();
+                }
+                else
+                {
+                    Debug.LogError("DownloadWeaponsTrigger not found!");
+                }
+
+                if (uploadAdmintrigger != null)
+                {
+                    uploadAdminTrigger = uploadAdmintrigger.GetComponent<Collider2D>();
+                }
+
+                if (calibrateDistrigger != null)
+                {
+                    calibrateDisTrigger = calibrateDistrigger.GetComponent<Collider2D>();
+                }
+
+                if (sabotageReactor1trigger != null)
+                {
+                    sabotageReactor1Trigger = sabotageReactor1trigger.GetComponent<Collider2D>();
+                }
+
+                if (sabotageReactor2trigger != null)
+                {
+                    sabotageReactor2Trigger = sabotageReactor2trigger.GetComponent<Collider2D>();
+                }
+
+                if (sabotageOxygen1trigger != null)
+                {
+                    sabotageOxygen1Trigger = sabotageOxygen1trigger.GetComponent<Collider2D>();
+                }
+
+                if (sabotageOxygen2trigger != null)
+                {
+                    sabotageOxygen2Trigger = sabotageOxygen2trigger.GetComponent<Collider2D>();
+                }
+
+                if (sabotageMapPanel != null)
+                {
+                    sabotageMapPanel = GameObject.Find("SabotageMapPanel");
+                }
+                else
+                {
+                    Debug.LogError("Sabotage Map Panel!");
+                }
+
+                emptyGarbageCafePanel = GameObject.Find("EmptyGarbageCafePanel");
+                if (emptyGarbageCafePanel != null)
+                {
+                    emptyGarbageCafePanel.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogError("EmptyGarbageCafePanel not found!");
+                }
+
+                cardSwipeAdminPanel = GameObject.Find("CardSwipeTaskPanel");
+                if (cardSwipeAdminPanel != null)
+                {
+                    cardSwipeAdminPanel.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogError("CardSwipeTaskPanel not found!");
+                }
+
+                downloadWeaponsPanel = GameObject.Find("DownloadTaskWeaponsPanel1");
+                if (downloadWeaponsPanel != null)
+                {
+                    downloadWeaponsPanel.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogError("DownloadTaskWeaponsPanel1 not found!");
+                }
+
+                uploadAdminPanel = GameObject.Find("UploadTaskWeaponsPanel");
+                if (uploadAdminPanel != null)
+                {
+                    uploadAdminPanel.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogError("UploadTaskWeaponsPanel not found!");
+                }
+
+                calibrateDisPanel = GameObject.Find("CalibrateDisElectricalPanel");
+                if (calibrateDisPanel != null)
+                {
+                    calibrateDisPanel.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogError("CalibrateDisElectricalPanel not found!");
+                }
+
+                sabotageReactor1Panel = GameObject.Find("SabotageReactorPanel");
+                if (sabotageReactor1Panel != null)
+                {
+                    sabotageReactor1Panel.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogError("Sabotage Reactor 1 Panel not found!");
+                }
+
+                sabotageReactor2Panel = GameObject.Find("SabotageReactorPanel2");
+                if (sabotageReactor2Panel != null)
+                {
+                    sabotageReactor2Panel.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogError("Sabotage Reactor 2 Panel not found!");
+                }
+
+                sabotageOxygen1Panel = GameObject.Find("SabotageO2Panel1");
+                if (sabotageOxygen1Panel != null)
+                {
+                    sabotageOxygen1Panel.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogError("Sabotage Oxygen 1 Panel not found!");
+                }
+
+                sabotageOxygen2Panel = GameObject.Find("SabotageO2Panel2");
+                if (sabotageOxygen2Panel != null)
+                {
+                    sabotageOxygen2Panel.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogError("Sabotage Oxygen 2 Panel not found!");
+                }
+
                 sabotageMapPanel = GameObject.Find("SabotageMapPanel");
-            }
-            else
-            {
-                Debug.LogError("Sabotage Map Panel!");
-            }
-
-            emptyGarbageCafePanel = GameObject.Find("EmptyGarbageCafePanel");
-            if (emptyGarbageCafePanel != null)
-            {
-                emptyGarbageCafePanel.SetActive(false);
-            }
-            else
-            {
-                Debug.LogError("EmptyGarbageCafePanel not found!");
-            }
-
-            cardSwipeAdminPanel = GameObject.Find("CardSwipeTaskPanel");
-            if (cardSwipeAdminPanel != null)
-            {
-                cardSwipeAdminPanel.SetActive(false);
-            }
-            else
-            {
-                Debug.LogError("CardSwipeTaskPanel not found!");
-            }
-
-            downloadWeaponsPanel = GameObject.Find("DownloadTaskWeaponsPanel1");
-            if (downloadWeaponsPanel != null)
-            {
-                downloadWeaponsPanel.SetActive(false);
-            }
-            else
-            {
-                Debug.LogError("DownloadTaskWeaponsPanel1 not found!");
-            }
-
-            uploadAdminPanel = GameObject.Find("UploadTaskWeaponsPanel");
-            if (uploadAdminPanel != null)
-            {
-                uploadAdminPanel.SetActive(false);
-            }
-            else
-            {
-                Debug.LogError("UploadTaskWeaponsPanel not found!");
-            }
-
-            calibrateDisPanel = GameObject.Find("CalibrateDisElectricalPanel");
-            if (calibrateDisPanel != null)
-            {
-                calibrateDisPanel.SetActive(false);
-            }
-            else
-            {
-                Debug.LogError("CalibrateDisElectricalPanel not found!");
-            }
-
-            sabotageReactor1Panel = GameObject.Find("SabotageReactorPanel");
-            if (sabotageReactor1Panel != null)
-            {
-                sabotageReactor1Panel.SetActive(false);
-            }
-            else
-            {
-                Debug.LogError("Sabotage Reactor 1 Panel not found!");
-            }
-
-            sabotageReactor2Panel = GameObject.Find("SabotageReactorPanel2");
-            if (sabotageReactor2Panel != null)
-            {
-                sabotageReactor2Panel.SetActive(false);
-            }
-            else
-            {
-                Debug.LogError("Sabotage Reactor 2 Panel not found!");
-            }
-
-            sabotageOxygen1Panel = GameObject.Find("SabotageO2Panel1");
-            if (sabotageOxygen1Panel != null)
-            {
-                sabotageOxygen1Panel.SetActive(false);
-            }
-            else
-            {
-                Debug.LogError("Sabotage Oxygen 1 Panel not found!");
-            }
-
-            sabotageOxygen2Panel = GameObject.Find("SabotageO2Panel2");
-            if (sabotageOxygen2Panel != null)
-            {
-                sabotageOxygen2Panel.SetActive(false);
-            }
-            else
-            {
-                Debug.LogError("Sabotage Oxygen 2 Panel not found!");
-            }
-
-            sabotageMapPanel = GameObject.Find("SabotageMapPanel");
-            if (sabotageMapPanel != null)
-            {
-                sabotageMapPanel.SetActive(false);
-            }
-            else
-            {
-                Debug.LogError("Sabotage Map Panel not found!");
+                if (sabotageMapPanel != null)
+                {
+                    sabotageMapPanel.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogError("Sabotage Map Panel not found!");
+                }
             }
         }
     }

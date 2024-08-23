@@ -532,7 +532,7 @@ MonoBehaviour:
   syncInterval: 0
   playerCount: 0
   playerInGame: 0
-  minPlayers: 4
+  minPlayers: 1
   maxPlayers: 8
   hostButton: {fileID: 0}
   host: {fileID: 0}
