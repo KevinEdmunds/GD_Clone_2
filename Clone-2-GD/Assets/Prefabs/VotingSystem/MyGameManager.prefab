@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3258713376546921279}
   m_Layer: 0
   m_Name: MyGameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,14 +48,30 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   PlayerCount: 0
+  PlayerLeftAlive: 0
   CurrentGameState: 0
   PLManager: {fileID: 0}
   myNetwork: {fileID: 0}
   PlayerNumbers: {fileID: 0}
-  PlayerID: {fileID: 0}
+  PlayerIDText: {fileID: 0}
+  TimerText: {fileID: 0}
+  EjectedMessage: {fileID: 0}
   VotingScreen: {fileID: 0}
-  PLPanelPrefab: {fileID: 0}
+  PLPanelPrefab: {fileID: 5028233155116125441, guid: fc50cbb4ffef2be4198550b25d446836, type: 3}
+  EjectPlayerScreen: {fileID: 0}
+  ProceedButton: {fileID: 0}
+  ImposterWonScreen: {fileID: 0}
+  CrewWonScreen: {fileID: 0}
   ContentParent: {fileID: 0}
+  PlayerSpawned: 0
+  TimeLeft: 0
+  DisplayTime: 0
+  SetTime: 120
+  minutes: 0
+  seconds: 0
+  SetSpaceTimer: 4
+  TimerOn: 0
+  TimerDPOn: 0
 --- !u!114 &3258713376546921279
 MonoBehaviour:
   m_ObjectHideFlags: 0
