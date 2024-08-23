@@ -14,11 +14,13 @@ public class PlayerHUD : NetworkBehaviour
     private GameObject emptyGarbageCafePanel;
     private GameObject cardSwipeAdminPanel;
     private GameObject downloadWeaponsPanel;
+    private GameObject uploadAdminPanel;
 
     private Collider2D playerCollider;
     private Collider2D emptyGarbageCafeTrigger;
     private Collider2D cardSwipeAdminTrigger;
     private Collider2D downloadWeaponsTrigger;
+    private Collider2D uploadAdminTrigger;
 
     public override void OnStartClient()
     {
@@ -31,6 +33,7 @@ public class PlayerHUD : NetworkBehaviour
             GameObject emptyGarbageCafetrigger = GameObject.Find("EmptyGarbageCafeTrigger");
             GameObject cardSwipeAdmintrigger = GameObject.Find("CardSwipeAdminTrigger");
             GameObject downloadWeaponstrigger = GameObject.Find("DownloadWeaponsTrigger");
+            GameObject uploadAdmintrigger = GameObject.Find("UploadAdminTrigger");
 
             if (emptyGarbageCafetrigger != null)
             {
@@ -57,6 +60,15 @@ public class PlayerHUD : NetworkBehaviour
             else
             {
                 Debug.LogError("DownloadWeaponsTrigger not found!");
+            }
+
+            if (uploadAdmintrigger != null)
+            {
+                uploadAdminTrigger = uploadAdmintrigger.GetComponent<Collider2D>();
+            }
+            else
+            {
+                Debug.LogError("UploadWeaponsTrigger not found!");
             }
 
             emptyGarbageCafePanel = GameObject.Find("EmptyGarbageCafePanel");
@@ -87,6 +99,16 @@ public class PlayerHUD : NetworkBehaviour
             else
             {
                 Debug.LogError("DownloadTaskWeaponsPanel1 not found!");
+            }
+
+            uploadAdminPanel = GameObject.Find("UploadTaskWeaponsPanel");
+            if (uploadAdminPanel != null)
+            {
+                uploadAdminPanel.SetActive(false);
+            }
+            else
+            {
+                Debug.LogError("UploadTaskWeaponsPanel not found!");
             }
         }
     }
@@ -137,6 +159,10 @@ public class PlayerHUD : NetworkBehaviour
                 {
                     downloadWeaponsPanel.SetActive(true);
                 }
+                else if (playerCollider != null && uploadAdminTrigger != null && playerCollider.IsTouching(uploadAdminTrigger))
+                {
+                    uploadAdminPanel.SetActive(true);
+                }
             }
         }
     }
@@ -161,6 +187,10 @@ public class PlayerHUD : NetworkBehaviour
                     useButton.interactable = true;
                 }
                 else if (playerCollider != null && downloadWeaponsTrigger != null && playerCollider.IsTouching(downloadWeaponsTrigger))
+                {
+                    useButton.interactable = true;
+                }
+                else if (playerCollider != null && uploadAdminTrigger != null && playerCollider.IsTouching(uploadAdminTrigger))
                 {
                     useButton.interactable = true;
                 }
