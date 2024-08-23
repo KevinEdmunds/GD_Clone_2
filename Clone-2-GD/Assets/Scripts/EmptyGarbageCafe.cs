@@ -7,10 +7,7 @@ public class EmptyGarbageCafe : MonoBehaviour
     public GameObject leavesParent;
     public GameObject emptyGarbagePanel;
     public TaskManager taskManager;
-    public Animator leavesAnimator;
-
-    public bool hasCafeBeenCompleted;
-    public bool hasStorageBeenCompleted;
+    public Animator leavesAnimator; 
     
     public BoxCollider2D chuteCollider;
     public float leverMoveSpeed = 2.0f;
