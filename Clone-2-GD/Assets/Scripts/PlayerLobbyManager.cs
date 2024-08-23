@@ -214,7 +214,7 @@ public class PlayerLobbyManager : NetworkBehaviour
     {
         if(NetworkServer.active)
         {
-            NetworkManager.singleton.ServerChangeScene("SampleScene 1");
+            NetworkManager.singleton.ServerChangeScene("TasksWorkingScene");
         }
     }
 }

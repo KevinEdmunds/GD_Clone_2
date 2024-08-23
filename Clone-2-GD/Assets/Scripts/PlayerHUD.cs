@@ -132,7 +132,7 @@ public class PlayerHUD : NetworkBehaviour
 
                 if(playerType.isImposter)
                 {
-                    if (sabotageMapPanel != null)
+                    if (sabotageMapPanel == null)
                     {
                         sabotageMapPanel = GameObject.Find("SabotageMapPanel");
                     }
@@ -262,10 +262,13 @@ public class PlayerHUD : NetworkBehaviour
 
     public void UseButton()
     {
+        Debug.Log("the use button is working");
         if (isLocalPlayer)
         {
+            Debug.Log("this is working too");
             if (!playerType.isImposter)
             {
+                Debug.Log("even here");
                 if (playerCollider != null && emptyGarbageCafeTrigger != null && playerCollider.IsTouching(emptyGarbageCafeTrigger))
                 {
                     emptyGarbageCafePanel.SetActive(true);

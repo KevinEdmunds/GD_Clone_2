@@ -8,6 +8,9 @@ TagManager:
   - Leaf
   - PlayerHitbox
   - ViewRenderer
+  - Content
+  - GameManager
+  - SabotageMap
   layers:
   - Default
   - TransparentFX
