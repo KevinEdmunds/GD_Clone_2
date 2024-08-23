@@ -83,5 +83,22 @@ public class PlayerType : NetworkBehaviour
     {
         playerLobby.CmdChangeColor(playerData.GetPlayerColor());
         playerLobby.CmdChangeName(playerData.GetPlayerName());
+        if(isImposter)
+        {
+            UpdateImpostersNameColor();
+        }
+    }
+
+    void UpdateImpostersNameColor()
+    {
+        GameObject[] playerList = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach(GameObject player in playerList)
+        {
+            if(player.GetComponent<PlayerType>().isImposter)
+            {
+                player.GetComponent<PlayerType>().playerNameText.color = Color.red;
+            }
+        }
     }
 }

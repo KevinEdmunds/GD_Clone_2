@@ -7,7 +7,7 @@ using Mirror;
 public class LobbyManager : NetworkBehaviour
 {
     public int playerCount=0;
-
+    public bool playerInGame = false;
     public int minPlayers=4, maxPlayers=8;
 
     public Button hostButton;
@@ -31,7 +31,10 @@ public class LobbyManager : NetworkBehaviour
             OnPlayerCountChanged();
             CheckIfGameIsReady();
             //Debug.Log(host);
-            host.UpdateHostButton(gameReady);
+            if(playerInGame)
+            {
+                host.UpdateHostButton(gameReady);
+            }
         }
 
     }

@@ -15,11 +15,10 @@ public class PlayerHUDbackup : NetworkBehaviour
     public GameObject playerRolePanel;
     public Text playerRoleText;
     public Button ventButton, useButton, reportButton, killButton, sabotageButton;
-
     
     private void Start()
     {
-
+        Debug.Log("This is in the main player hud script");
         if (isLocalPlayer)
         {
             Debug.Log("hello");
@@ -61,8 +60,8 @@ public class PlayerHUDbackup : NetworkBehaviour
         playerActions.canMove = false;
         playerRolePanel.SetActive(true);
         yield return new WaitForSeconds(3);
-        playerRoleText.text = "You are " + (playerType.isImposter ?  " the Imposter": "a Crewmate");
-        playerRoleText.color = playerType.isImposter ? Color.blue : Color.red;
+        playerRoleText.text = "You are " + (playerType.isImposter ?  " an Imposter" : "a Crewmate");
+        playerRoleText.color = playerType.isImposter ? Color.red : Color.blue;
         yield return new WaitForSeconds(3);
         playerRolePanel.SetActive(false);
         playerActions.canMove = true;

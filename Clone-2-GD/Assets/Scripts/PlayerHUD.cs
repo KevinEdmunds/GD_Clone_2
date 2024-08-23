@@ -93,6 +93,7 @@ public class PlayerHUD : NetworkBehaviour
 
     void Start()
     {
+
         if (isLocalPlayer)
         {
             GameObject.FindGameObjectWithTag("MainCamera").transform.parent = this.transform;

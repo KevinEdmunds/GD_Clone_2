@@ -74,7 +74,7 @@ public class PlayerLobbyManager : NetworkBehaviour
            
             LobbyManager lobby = GameObject.FindObjectOfType<LobbyManager>();
             lobby.host = this;
-        }
+            GameObject.FindObjectOfType<LobbyManager>().playerInGame = true;        }
     }
     public void UpdateHostButton(bool state)
     {
@@ -208,7 +208,7 @@ public class PlayerLobbyManager : NetworkBehaviour
     {
         if(NetworkServer.active)
         {
-            NetworkManager.singleton.ServerChangeScene("SampleScene");
+            NetworkManager.singleton.ServerChangeScene("GameScene 1");
         }
     }
 }

@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/VotingSystemScene.unity
     guid: 7908d28d70a244747b3e1415b38d8a50
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-    guid: 2a596fc6c8d35704483676f2451a983a
+    path: Assets/Scenes/SampleScene 1.unity
+    guid: 2c77e5d8379bcb6408932214bd674c87
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/GameScene 1.unity
+    guid: 8035eb8ac8746014185e329cf6f4d5ad
   m_configObjects: {}
