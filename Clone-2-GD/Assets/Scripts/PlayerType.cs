@@ -28,8 +28,10 @@ public class PlayerType : NetworkBehaviour
         //Debug.Log("Changing Roles  ");
         isImposter = state;
     }
-
-
+    public bool GetPlayerType()
+    {
+        return isImposter;
+    }
     // Hook method for when isImposter changes
     void OnRoleChange(bool oldState, bool newState)
     {
