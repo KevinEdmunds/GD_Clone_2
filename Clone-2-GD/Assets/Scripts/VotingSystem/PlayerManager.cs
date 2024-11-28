@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Mirror;
 using System;
 
@@ -27,19 +28,24 @@ public class PlayerManager : NetworkBehaviour
         if (isLocalPlayer)
         {
             IsAlive = playerType.isAlive;
-            managerVS = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerVS>();
-            managerVS.CMdAddPlayerCount();
-            managerVS.PlayerSpawned = true;
-            managerVS.PLManager = this;
-            // transform.parent = managerVS.playerParent;
+            if (SceneManager.GetActiveScene().name != "Lobby")
+            {
+                managerVS = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerVS>();
+                managerVS.CMdAddPlayerCount();
+                managerVS.PlayerSpawned = true;
+                managerVS.PLManager = this;
 
-            AssignPlayerID(managerVS.PlayerCount);
-          //  UpdatePlayerId();
-            // PutOnServer();
-            Debug.Log("Spawned");
-            buffer = false;
-            //CmdPutOnServer();
-            //PositionPlayer();
+                // transform.parent = managerVS.playerParent;
+
+                AssignPlayerID(managerVS.PlayerCount);
+                //  UpdatePlayerId();
+                // PutOnServer();
+                Debug.Log("Spawned");
+                buffer = false;
+                //CmdPutOnServer();
+                //PositionPlayer();
+            }
+
         }
         
     }
@@ -73,11 +79,15 @@ public class PlayerManager : NetworkBehaviour
             TestChanges();
         }
 
-        if (isLocalPlayer && 
-            managerVS.CurrentGameState == GameManagerVS.GameState.Normal)
+        if (SceneManager.GetActiveScene().name != "Lobby")
         {
-            HasVoted = false;
+            if (isLocalPlayer &&
+managerVS.CurrentGameState == GameManagerVS.GameState.Normal)
+            {
+                HasVoted = false;
+            }
         }
+
     }
 
     private void TestChanges()

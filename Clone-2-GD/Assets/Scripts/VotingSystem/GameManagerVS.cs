@@ -168,8 +168,7 @@ public class GameManagerVS : NetworkBehaviour
             
             VotingScreen.SetActive(true);
             ProceedButton.SetActive(false);
-
-            //SetGameToVoting();
+           //SetGameToVoting();
         }
     }
 

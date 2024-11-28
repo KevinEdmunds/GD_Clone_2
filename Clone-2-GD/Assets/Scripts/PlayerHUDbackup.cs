@@ -21,25 +21,22 @@ public class PlayerHUDbackup : NetworkBehaviour
         Debug.Log("This is in the main player hud script");
         if (isLocalPlayer)
         {
+            SetUpLobbyHUD(true);
             Debug.Log("hello");
             string sceneName = SceneManager.GetActiveScene().name;
-            if (sceneName == "Lobby")
-            {
-                Debug.Log("in the lobby");
-                SetUpLobbyHUD();
-            }
-            else
+            if (sceneName != "Lobby")
             {
                 Debug.Log("in the game");
+                SetUpLobbyHUD(false);
                 SetUpGameHUD();
             }
-            viewLimiter.SetActive(true);
+            viewLimiter.SetActive(false);
             GameObject.FindGameObjectWithTag("MainCamera").transform.parent = this.transform;
         }
     }
-    void SetUpLobbyHUD()
+    void SetUpLobbyHUD(bool state)
     {
-        lobbyHUD.SetActive(true);
+        lobbyHUD.SetActive(state);
     }
     void SetUpGameHUD()
     {

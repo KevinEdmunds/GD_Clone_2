@@ -733,7 +733,7 @@ MonoBehaviour:
   syncInterval: 0
   playerCount: 0
   playerInGame: 0
-  minPlayers: 1
+  minPlayers: 4
   maxPlayers: 8
   hostButton: {fileID: 0}
   host: {fileID: 0}
@@ -887,7 +887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1313201742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -920,7 +920,7 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 5704109296100718299, guid: 89a753aff37cee7438913f69f96bf9d2, type: 3}
-  - {fileID: 0}
+  - {fileID: 5028233155116125441, guid: fc50cbb4ffef2be4198550b25d446836, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -1402,13 +1402,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4270587356714257289, guid: 57c6dc3fedc0e624c81692ee6c82d31a, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 2710432407965512610, guid: 3a45ec26d07e49841a03a356d13d9583, type: 3}
+    - target: {fileID: 4270587356714257289, guid: 57c6dc3fedc0e624c81692ee6c82d31a, type: 3}
+      propertyPath: spawnPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270587356714257289, guid: 57c6dc3fedc0e624c81692ee6c82d31a, type: 3}
+      propertyPath: spawnPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5028233155116125441, guid: fc50cbb4ffef2be4198550b25d446836, type: 3}
+    - target: {fileID: 4270587356714257289, guid: 57c6dc3fedc0e624c81692ee6c82d31a, type: 3}
+      propertyPath: spawnPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 5704109296100718299, guid: 89a753aff37cee7438913f69f96bf9d2, type: 3}
     - target: {fileID: 4270587356714257291, guid: 57c6dc3fedc0e624c81692ee6c82d31a, type: 3}
       propertyPath: m_Name
       value: NetworkManager Steam
       objectReference: {fileID: 0}
     - target: {fileID: 4270587356714257291, guid: 57c6dc3fedc0e624c81692ee6c82d31a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4270587358421984999, guid: 57c6dc3fedc0e624c81692ee6c82d31a, type: 3}
       propertyPath: m_Text

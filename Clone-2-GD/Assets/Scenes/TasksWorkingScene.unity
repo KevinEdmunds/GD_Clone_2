@@ -2994,11 +2994,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1424116799966815062, guid: ae09f93179cf16146b104b7922416da4, type: 3}
       propertyPath: isImposterList.Array.data[0]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1424116799966815062, guid: ae09f93179cf16146b104b7922416da4, type: 3}
       propertyPath: isImposterList.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1424116799966815063, guid: ae09f93179cf16146b104b7922416da4, type: 3}
       propertyPath: sceneId
